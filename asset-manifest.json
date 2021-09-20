@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/remote_calendar/static/css/main.ea1455b2.chunk.css",
+    "main.js": "/remote_calendar/static/js/main.3ee22e8a.chunk.js",
+    "main.js.map": "/remote_calendar/static/js/main.3ee22e8a.chunk.js.map",
+    "runtime-main.js": "/remote_calendar/static/js/runtime-main.f380938e.js",
+    "runtime-main.js.map": "/remote_calendar/static/js/runtime-main.f380938e.js.map",
+    "static/js/2.e87327f3.chunk.js": "/remote_calendar/static/js/2.e87327f3.chunk.js",
+    "static/js/2.e87327f3.chunk.js.map": "/remote_calendar/static/js/2.e87327f3.chunk.js.map",
+    "index.html": "/remote_calendar/index.html",
+    "static/css/main.ea1455b2.chunk.css.map": "/remote_calendar/static/css/main.ea1455b2.chunk.css.map",
+    "static/js/2.e87327f3.chunk.js.LICENSE.txt": "/remote_calendar/static/js/2.e87327f3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f380938e.js",
+    "static/js/2.e87327f3.chunk.js",
+    "static/css/main.ea1455b2.chunk.css",
+    "static/js/main.3ee22e8a.chunk.js"
+  ]
+}
