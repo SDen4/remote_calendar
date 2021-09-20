@@ -1,3 +1,3 @@
 # Remote Calendar App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Watch on [Github pages](https://sden4.github.io/remote_calendar/).
