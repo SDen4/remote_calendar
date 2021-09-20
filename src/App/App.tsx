@@ -1,10 +1,13 @@
 import React from 'react';
+
+import Root from '../views/Root';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Remote calendar</h1>
+      <Root />
     </div>
   );
 }
