@@ -11,3 +11,8 @@
   color: #d3d3d3;
   padding: 20px;
 }
+
+.section_wrapper {
+  display: flex;
+  width: 100%;
+}
