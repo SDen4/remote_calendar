@@ -2,30 +2,11 @@ import React from 'react';
 import { useTable } from 'react-table';
 
 import columns from './assets/columns';
+import data from './assets/data';
 
 import styles from './Calendar.module.css';
 
 const Calendar: React.FC = () => {
-  const data = React.useMemo(
-    () => [
-      {
-        col1: 'Hello',
-        col2: 'World',
-      },
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-      },
-    ],
-    [],
-  );
-
-  // const tableInstance = useTable({ columns, data });
-
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
