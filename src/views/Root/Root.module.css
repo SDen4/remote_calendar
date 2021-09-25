@@ -17,3 +17,7 @@
   display: flex;
   width: 100%;
 }
+
+.calendar_wrapper {
+  overflow-x: scroll;
+}

@@ -2,25 +2,25 @@ import { dateFormatter } from '../../../utils/dateFormatter';
 
 const dateGenerator: any = () => {
   const currentDate = new Date();
-  console.log(currentDate);
-  console.log(dateFormatter(currentDate));
+  const datesRange: any[] = [];
+  const datesLength = 100; // days in initial range
+
+  for (let i = 0; i < datesLength; i++) {
+    datesRange.push(
+      dateFormatter(new Date(currentDate.getTime() + 86400000 * i)),
+    );
+  }
+
+  return datesRange;
 };
 
-dateGenerator();
+const datesRange = dateGenerator();
 
-const columns: any = [
-  {
-    Header: 'Column 1',
-    accessor: 'col1',
-  },
-  {
-    Header: 'Column 2',
-    accessor: 'col2',
-  },
-  {
-    Header: 'Column 3',
-    accessor: 'col3',
-  },
-];
+const columns: any = datesRange.map((el: string) => {
+  return {
+    Header: el,
+    accessor: el,
+  };
+});
 
 export default columns;

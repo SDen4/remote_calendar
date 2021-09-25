@@ -1,4 +1,6 @@
 import React from 'react';
+import clsx from 'clsx';
+
 import Calendar from '../../components/Calendar';
 
 import styles from './Root.module.css';
@@ -10,7 +12,9 @@ const Root: React.FC = () => {
         <h1>Remote Calendar</h1>
       </header>
 
-      <section className={styles.section_wrapper}>
+      <section
+        className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
+      >
         <Calendar />
       </section>
     </div>
