@@ -1,0 +1,14 @@
+.table {
+  width: 100%;
+}
+
+.tableHeader {
+  border: 1px solid #fff;
+  padding: 5px 20px;
+}
+
+.tableCell {
+  background-color: transparent;
+  border: 1px solid #fff;
+  padding: 5px 20px;
+}
