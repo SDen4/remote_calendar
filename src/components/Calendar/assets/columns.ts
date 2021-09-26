@@ -24,7 +24,7 @@ for (let i = 0; i < datesRange.length; i++) {
     });
 
     columns.push({
-      Header: `${monthsNames(currDayMonth)} ${year}`,
+      Header: `${monthsNames(currDayMonth)} '${year}`,
       accessor: currDayMonth,
       columns: [...monthDays],
     });

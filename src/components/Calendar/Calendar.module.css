@@ -3,10 +3,11 @@
 }
 
 .tableHeader {
-  border: 1px solid #fff;
-  padding: 5px 2px;
+  border: 1px solid dimgray;
+  padding: 5px 4px;
   font-size: 13px;
   font-weight: 100;
+  line-height: 8px;
   cursor: default;
   transition: 0.3s;
 }
@@ -18,6 +19,6 @@
 
 .tableCell {
   background-color: transparent;
-  border: 1px solid #fff;
-  padding: 5px 2px;
+  border: 1px solid dimgray;
+  padding: 5px 4px;
 }
