@@ -5,6 +5,15 @@
 .tableHeader {
   border: 1px solid #fff;
   padding: 5px 2px;
+  font-size: 13px;
+  font-weight: 100;
+  cursor: default;
+  transition: 0.3s;
+}
+
+.tableHeader:hover {
+  background-color: steelblue;
+  color: #fff;
 }
 
 .tableCell {
