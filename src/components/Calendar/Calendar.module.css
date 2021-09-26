@@ -4,17 +4,12 @@
 
 .tableHeader {
   border: 1px solid dimgray;
-  padding: 5px 4px;
+  padding: 0;
   font-size: 13px;
   font-weight: 100;
   line-height: 8px;
   cursor: default;
   transition: 0.3s;
-}
-
-.tableHeader:hover {
-  background-color: steelblue;
-  color: #fff;
 }
 
 .tableCell {
