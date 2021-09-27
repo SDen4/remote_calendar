@@ -1,6 +1,7 @@
 .cell {
   padding: 5px 4px;
   box-sizing: border-box;
+  color: #fff;
 }
 
 .cell:hover {
