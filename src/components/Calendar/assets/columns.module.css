@@ -18,3 +18,8 @@
 .weekend:hover {
   background-color: darkgreen;
 }
+
+.headerFirstCol {
+  padding-left: 15px;
+  padding-right: 15px;
+}

@@ -9,7 +9,12 @@ import styles from './columns.module.css';
 const datesRange = dateGenerator();
 
 let monthDays: any = [];
-const columns: any = [];
+const columns: any = [
+  {
+    Header: <div className={styles.headerFirstCol}>Сотрудник</div>,
+    accessor: 'name',
+  },
+];
 
 for (let i = 0; i < datesRange.length; i++) {
   let currDayMonth = datesRange[i].date.slice(3, 5);
