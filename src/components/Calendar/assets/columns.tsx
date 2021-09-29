@@ -31,7 +31,9 @@ for (let i = 0; i < datesRange.length; i++) {
           {datesRange[i].date.slice(0, 2)}
         </div>
       ),
-      accessor: datesRange[i].date,
+      accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
+        i
+      ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
     });
   } else {
     monthDays.push({
@@ -47,7 +49,9 @@ for (let i = 0; i < datesRange.length; i++) {
           {datesRange[i].date.slice(0, 2)}
         </div>
       ),
-      accessor: datesRange[i].date,
+      accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
+        i
+      ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
     });
 
     columns.push({

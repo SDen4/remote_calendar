@@ -12,6 +12,7 @@
 }
 
 .tableCell {
+  text-align: center;
   background-color: transparent;
   border: 1px solid dimgray;
   padding: 5px 4px;

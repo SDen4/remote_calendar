@@ -1,15 +1,9 @@
 const data: any = [
   {
-    col1: 'Hello',
-    col2: 'World',
+    accessor_300921: 1,
   },
   {
-    col1: 'react-table',
-    col2: 'rocks',
-  },
-  {
-    col1: 'whatever',
-    col2: 'you want',
+    accessor_300921: 1,
   },
 ];
 
