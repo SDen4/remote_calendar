@@ -23,3 +23,7 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.headerTopCell:hover {
+  background-color: transparent;
+}

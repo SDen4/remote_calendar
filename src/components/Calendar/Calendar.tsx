@@ -30,6 +30,7 @@ const Calendar: React.FC = () => {
           </tr>
         ))}
       </thead>
+
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);

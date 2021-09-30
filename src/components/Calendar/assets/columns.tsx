@@ -39,6 +39,15 @@ for (let i = 0; i < datesRange.length; i++) {
       accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
         i
       ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
+      Cell: (cell: any) => {
+        if (cell.row.index + 1 === cell.rows.length) {
+          const sortArr = cell.data.filter((el: any) =>
+            Object.keys(el).join(' ').includes(cell.column.id),
+          );
+          return <div>{sortArr.length ? sortArr.length : ''}</div>;
+        }
+        return <div>{cell.value}</div>;
+      },
     });
   } else {
     monthDays.push({
@@ -57,13 +66,22 @@ for (let i = 0; i < datesRange.length; i++) {
       accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
         i
       ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
+      Cell: (cell: any) => {
+        if (cell.row.index + 1 === cell.rows.length) {
+          const sortArr = cell.data.filter((el: any) =>
+            Object.keys(el).join(' ').includes(cell.column.id),
+          );
+          return <div>{sortArr.length ? sortArr.length : ''}</div>;
+        }
+        return <div>{cell.value}</div>;
+      },
     });
 
     columns.push({
       Header: (
-        <div className={styles.cell}>{`${monthsNames(
-          currDayMonth,
-        )} '${year}`}</div>
+        <div
+          className={clsx(styles.cell, styles.headerTopCell)}
+        >{`${monthsNames(currDayMonth)} '${year}`}</div>
       ),
       accessor: currDayMonth,
       columns: [...monthDays],
