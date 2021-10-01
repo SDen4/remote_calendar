@@ -51,7 +51,7 @@ for (let i = 0; i < datesRange.length; i++) {
           const sortArr = cell.data.filter((el: any) =>
             Object.keys(el).join(' ').includes(cell.column.id),
           );
-          return <div>{cell.rows.length - sortArr.length}</div>;
+          return <div>{cell.rows.length - sortArr.length - 2}</div>;
         }
 
         return <div>{cell.value}</div>;
@@ -86,7 +86,7 @@ for (let i = 0; i < datesRange.length; i++) {
           const sortArr = cell.data.filter((el: any) =>
             Object.keys(el).join(' ').includes(cell.column.id),
           );
-          return <div>{cell.rows.length - sortArr.length}</div>;
+          return <div>{cell.rows.length - sortArr.length - 2}</div>;
         }
         return <div>{cell.value}</div>;
       },
