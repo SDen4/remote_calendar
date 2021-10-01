@@ -30,3 +30,9 @@
   font-size: 13px;
   line-height: 10px;
 }
+
+.firstCell {
+  position: sticky;
+  left: 0;
+  background-color: black;
+}
