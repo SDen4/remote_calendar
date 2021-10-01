@@ -11,7 +11,7 @@ const datesRange = dateGenerator();
 let monthDays: any = [];
 const columns: any = [
   {
-    Header: <div className={styles.headerFirstCol}>Сотрудник</div>,
+    Header: <div className={styles.headerFirstCol}>Employee</div>,
     accessor: 'name',
   },
 ];
