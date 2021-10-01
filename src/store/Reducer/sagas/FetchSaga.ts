@@ -1,11 +1,21 @@
-import { takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
-import { FIRST_SAGA } from '../../constants';
+import { saveAllData } from '../../actions';
 
-function* sagaWorker() {
+import { FETCH_SAGA } from '../../constants';
+import { FetchSagaActionType, IData } from '../../types';
+
+function* sagaWorker(action: FetchSagaActionType) {
   try {
-    // eslint-disable-next-line no-console
-    yield console.log('first saga');
+    const calendarDataFromLocalStorage: IData[] = yield JSON.parse(
+      localStorage.getItem('calendar') || '[]',
+    );
+
+    if (calendarDataFromLocalStorage.length) {
+      yield put(saveAllData(calendarDataFromLocalStorage));
+    } else {
+      yield localStorage.setItem('calendar', JSON.stringify(action.data));
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
@@ -13,5 +23,5 @@ function* sagaWorker() {
 }
 
 export function* FetchSagaWatcher() {
-  yield takeEvery(FIRST_SAGA, sagaWorker);
+  yield takeEvery(FETCH_SAGA, sagaWorker);
 }

@@ -1,3 +1,4 @@
+import { SAVE_ALL_DATA } from '../constants';
 import { ActionsType } from '../actions';
 import { InitialStateType } from '../types';
 
@@ -17,6 +18,12 @@ export const Reducer = (
   action: ActionsType,
 ): typeof state => {
   switch (action.type) {
+    case SAVE_ALL_DATA:
+      return {
+        ...state,
+        data: action.data,
+      };
+
     default:
       return state;
   }

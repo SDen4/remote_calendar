@@ -1,1 +1,2 @@
-export const FIRST_SAGA = 'FIRST_SAGA';
+export const FETCH_SAGA = 'FETCH_SAGA';
+export const SAVE_ALL_DATA = 'SAVE_ALL_DATA';

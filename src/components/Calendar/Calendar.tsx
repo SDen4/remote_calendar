@@ -1,19 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { useTable } from 'react-table';
 
-import { AppStateType } from '../../store/RootReducer';
-import { IData } from '../../store/types';
-
+import { ICalendar } from './types';
 import columns from './assets/columns';
 
 import styles from './Calendar.module.css';
 
-const Calendar: React.FC = () => {
-  const data = useSelector<AppStateType, IData[]>(
-    (store) => store.reducer.data,
-  );
-
+const Calendar: React.FC<ICalendar> = ({ data }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
