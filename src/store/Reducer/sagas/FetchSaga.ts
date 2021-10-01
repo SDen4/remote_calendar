@@ -12,6 +12,6 @@ function* sagaWorker() {
   }
 }
 
-export function* FirstSagaWatcher() {
+export function* FetchSagaWatcher() {
   yield takeEvery(FIRST_SAGA, sagaWorker);
 }

@@ -1,7 +1,7 @@
 import { fork, all } from 'redux-saga/effects';
 
-import { FirstSagaWatcher } from './Reducer/sagas/FirstSaga';
+import { FetchSagaWatcher } from './Reducer/sagas/FetchSaga';
 
 export default function* rootSaga() {
-  yield all([fork(FirstSagaWatcher)]);
+  yield all([fork(FetchSagaWatcher)]);
 }

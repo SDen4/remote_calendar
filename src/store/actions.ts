@@ -1,11 +1,11 @@
 import { FIRST_SAGA } from './constants';
 
-export const firstSaga = () => {
+export const fetchSaga = () => {
   return {
     type: FIRST_SAGA,
   } as const;
 };
 
-type firstSagaType = ReturnType<typeof firstSaga>;
+type FetchSagaType = ReturnType<typeof fetchSaga>;
 
-export type ActionsType = firstSagaType;
+export type ActionsType = FetchSagaType;
