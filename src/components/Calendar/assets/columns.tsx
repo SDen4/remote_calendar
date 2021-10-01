@@ -40,12 +40,20 @@ for (let i = 0; i < datesRange.length; i++) {
         i
       ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
       Cell: (cell: any) => {
-        if (cell.row.index + 1 === cell.rows.length) {
+        if (cell.row.index === cell.rows.length - 1) {
           const sortArr = cell.data.filter((el: any) =>
             Object.keys(el).join(' ').includes(cell.column.id),
           );
-          return <div>{sortArr.length ? sortArr.length : ''}</div>;
+          return <div>{sortArr.length}</div>;
         }
+
+        if (cell.row.index === cell.rows.length - 2) {
+          const sortArr = cell.data.filter((el: any) =>
+            Object.keys(el).join(' ').includes(cell.column.id),
+          );
+          return <div>{cell.rows.length - sortArr.length}</div>;
+        }
+
         return <div>{cell.value}</div>;
       },
     });
@@ -67,11 +75,18 @@ for (let i = 0; i < datesRange.length; i++) {
         i
       ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
       Cell: (cell: any) => {
-        if (cell.row.index + 1 === cell.rows.length) {
+        if (cell.row.index === cell.rows.length - 1) {
           const sortArr = cell.data.filter((el: any) =>
             Object.keys(el).join(' ').includes(cell.column.id),
           );
-          return <div>{sortArr.length ? sortArr.length : ''}</div>;
+          return <div>{sortArr.length}</div>;
+        }
+
+        if (cell.row.index === cell.rows.length - 2) {
+          const sortArr = cell.data.filter((el: any) =>
+            Object.keys(el).join(' ').includes(cell.column.id),
+          );
+          return <div>{cell.rows.length - sortArr.length}</div>;
         }
         return <div>{cell.value}</div>;
       },

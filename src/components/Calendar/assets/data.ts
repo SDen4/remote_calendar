@@ -16,7 +16,10 @@ const data: any = [
     accessor_101021: 1,
   },
   {
-    name: 'Itogo',
+    name: 'Total office',
+  },
+  {
+    name: 'Total remote',
   },
 ];
 
