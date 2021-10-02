@@ -1,6 +1,6 @@
 import { dateFormatter } from './dateFormatter';
 
-const dateGenerator: any = (date: any) => {
+const dateGenerator: any = (date: Date) => {
   const currentDate = date;
   const datesRange: any[] = [];
   const datesLength = 365; // days in initial range

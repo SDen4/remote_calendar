@@ -17,20 +17,17 @@ function* sagaWorker(action: FetchSagaActionType) {
       localStorage.getItem('calendar') || '[]',
     );
 
-    if (firstRangeDateFromLocalStorage !== null) {
-      const initialColumns: any[] = yield columnGenerator(
-        firstRangeDateFromLocalStorage,
-      );
+    let initialColumns: any[] = yield [];
 
-      yield put(saveAllColumns(initialColumns));
+    if (firstRangeDateFromLocalStorage) {
+      initialColumns = yield columnGenerator(firstRangeDateFromLocalStorage);
       yield put(saveFirstRangeDate(firstRangeDateFromLocalStorage));
     } else {
-      const newDay = new Date();
-      const initialColumns: any[] = yield columnGenerator(newDay);
-
-      yield put(saveAllColumns(initialColumns));
-      yield localStorage.setItem('firstRangeDate', String(newDay));
+      initialColumns = yield columnGenerator(new Date());
+      yield localStorage.setItem('firstRangeDate', String(new Date()));
     }
+
+    yield put(saveAllColumns(initialColumns));
 
     if (calendarDataFromLocalStorage.length) {
       yield put(saveAllData(calendarDataFromLocalStorage));
