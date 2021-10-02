@@ -2,12 +2,11 @@ import React from 'react';
 import { useTable } from 'react-table';
 
 import { ICalendar } from './types';
-import columns from './assets/columns';
 
 import styles from './Calendar.module.css';
 import clsx from 'clsx';
 
-const Calendar: React.FC<ICalendar> = ({ data }) => {
+const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 

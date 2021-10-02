@@ -1,4 +1,8 @@
-import { SAVE_ALL_DATA } from '../constants';
+import {
+  SAVE_ALL_DATA,
+  SAVE_ALL_COLUMNS,
+  SAVE_FIRST_RANGE_DATE,
+} from '../constants';
 import { ActionsType } from '../actions';
 import { InitialStateType } from '../types';
 
@@ -11,6 +15,8 @@ const initialState: InitialStateType = {
       name: 'Total remote',
     },
   ],
+  columns: [],
+  firstRangeDate: null,
 };
 
 export const Reducer = (
@@ -22,6 +28,18 @@ export const Reducer = (
       return {
         ...state,
         data: action.data,
+      };
+
+    case SAVE_ALL_COLUMNS:
+      return {
+        ...state,
+        columns: action.columns,
+      };
+
+    case SAVE_FIRST_RANGE_DATE:
+      return {
+        ...state,
+        firstRangeDate: action.firstRangeDate,
       };
 
     default:

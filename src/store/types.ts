@@ -7,6 +7,8 @@ export interface IData {
 
 export interface InitialStateType {
   data: IData[];
+  columns: any[];
+  firstRangeDate: Date | null;
 }
 
 export interface FetchSagaActionType {

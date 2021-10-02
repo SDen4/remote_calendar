@@ -13,6 +13,9 @@ import styles from './Root.module.css';
 const Root: React.FC = () => {
   const dispatch = useDispatch();
 
+  const columns = useSelector<AppStateType, any[]>(
+    (store) => store.reducer.columns,
+  );
   const data = useSelector<AppStateType, IData[]>(
     (store) => store.reducer.data,
   );
@@ -31,7 +34,7 @@ const Root: React.FC = () => {
       <section
         className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
       >
-        <Calendar data={data} />
+        <Calendar data={data} columns={columns} />
       </section>
     </div>
   );
