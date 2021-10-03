@@ -3,6 +3,7 @@ import {
   SAVE_ALL_COLUMNS,
   SAVE_FIRST_RANGE_DATE,
   SET_MODAL_FLAG,
+  ADD_NEW_EMPLOYEE,
 } from '../constants';
 import { ActionsType } from '../actions';
 import { InitialStateType } from '../types';
@@ -48,6 +49,12 @@ export const Reducer = (
       return {
         ...state,
         modalFlag: action.modalFlag,
+      };
+
+    case ADD_NEW_EMPLOYEE:
+      return {
+        ...state,
+        data: [action.newEmployee, ...state.data],
       };
 
     default:

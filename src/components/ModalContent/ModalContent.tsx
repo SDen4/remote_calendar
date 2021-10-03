@@ -1,17 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addNewEmployee, setModalFlag } from '../../store/actions';
+
 import Button from '../../ui/Button';
+
+import accessorDatesGenerator from '../../utils/accessorDatesGenerator';
 
 import styles from './ModalContent.module.css';
 
 const ModalContent: React.FC = () => {
-  const onSubmitHahdler = () => {
-    return null;
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState<string>('');
+  const [typeOfWork, setTypeOfWork] = useState<string>('office');
+
+  const onRadioClick = (type: string) => {
+    setTypeOfWork(type);
   };
 
-  const onRadioClick = (event: any) => {
-    // eslint-disable-next-line no-console
-    console.log(event.target.value);
-    return null;
+  const onChangeNameHandler = (event: any) => {
+    setName(event.target.value);
+  };
+
+  const onSubmitHahdler = () => {
+    if (typeOfWork === 'office') {
+      const newEmployee = { name };
+      dispatch(addNewEmployee(newEmployee));
+    }
+
+    if (typeOfWork === 'remote') {
+      const newEmloyee = accessorDatesGenerator(new Date(), name);
+      dispatch(addNewEmployee(newEmloyee));
+    }
+
+    dispatch(setModalFlag(false));
   };
 
   return (
@@ -21,7 +44,7 @@ const ModalContent: React.FC = () => {
       <form onSubmit={onSubmitHahdler} className={styles.form}>
         <div className={styles.labelWrapper}>
           <label>Name: </label>
-          <input type="text" />
+          <input type="text" onChange={onChangeNameHandler} />
         </div>
 
         <div className={styles.labelWrapper}>
@@ -33,8 +56,9 @@ const ModalContent: React.FC = () => {
               <input
                 type="radio"
                 name="radio"
-                value="office"
-                onClick={(event) => onRadioClick(event)}
+                value={typeOfWork}
+                defaultChecked
+                onClick={() => onRadioClick('office')}
               />
             </div>
 
@@ -43,15 +67,19 @@ const ModalContent: React.FC = () => {
               <input
                 type="radio"
                 name="radio"
-                value="remote"
-                onClick={(event) => onRadioClick(event)}
+                value={typeOfWork}
+                onClick={() => onRadioClick('remote')}
               />
             </div>
           </div>
         </div>
       </form>
 
-      <Button buttonText="Add" buttonType="submit" onButtonClick={() => null} />
+      <Button
+        buttonText="Add"
+        buttonType="submit"
+        onButtonClick={onSubmitHahdler}
+      />
     </div>
   );
 };

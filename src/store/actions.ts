@@ -4,6 +4,7 @@ import {
   SAVE_ALL_COLUMNS,
   SAVE_FIRST_RANGE_DATE,
   SET_MODAL_FLAG,
+  ADD_NEW_EMPLOYEE,
 } from './constants';
 import { IData } from './types';
 
@@ -42,15 +43,24 @@ export const setModalFlag = (modalFlag: boolean) => {
   } as const;
 };
 
+export const addNewEmployee = (newEmployee: IData) => {
+  return {
+    type: ADD_NEW_EMPLOYEE,
+    newEmployee,
+  } as const;
+};
+
 type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
 type saveFirstRangeDateType = ReturnType<typeof saveFirstRangeDate>;
 type setModalFlagType = ReturnType<typeof setModalFlag>;
+type addNewEmployeeType = ReturnType<typeof addNewEmployee>;
 
 export type ActionsType =
   | FetchSagaType
   | saveAllDataType
   | saveAllColumnsType
   | saveFirstRangeDateType
-  | setModalFlagType;
+  | setModalFlagType
+  | addNewEmployeeType;
