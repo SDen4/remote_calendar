@@ -9,6 +9,7 @@ import { fetchSaga } from '../../store/actions';
 import { AppStateType } from '../../store/RootReducer';
 
 import styles from './Root.module.css';
+import Button from '../../ui/Button';
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
@@ -25,11 +26,23 @@ const Root: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
+  const onButtonClick = () => {
+    return null;
+  };
+
   return (
     <div className={styles.root_wrapper}>
       <header>
         <h1>Remote Calendar</h1>
       </header>
+
+      <section className={styles.section_wrapper}>
+        <Button
+          buttonText="Add employee"
+          buttonType="button"
+          onButtonClick={onButtonClick}
+        />
+      </section>
 
       <section
         className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
