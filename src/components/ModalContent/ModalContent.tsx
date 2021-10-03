@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions';
+import { AppStateType } from '../../store/RootReducer';
+import { IData } from '../../store/types';
 
 import Button from '../../ui/Button';
 
@@ -11,6 +13,10 @@ import styles from './ModalContent.module.css';
 
 const ModalContent: React.FC = () => {
   const dispatch = useDispatch();
+
+  const data = useSelector<AppStateType, IData[]>(
+    (store) => store.reducer.data,
+  );
 
   const [name, setName] = useState<string>('');
   const [typeOfWork, setTypeOfWork] = useState<string>('office');
@@ -27,11 +33,13 @@ const ModalContent: React.FC = () => {
     if (typeOfWork === 'office') {
       const newEmployee = { name };
       dispatch(addNewEmployee(newEmployee));
+      localStorage.setItem('calendar', JSON.stringify([newEmployee, ...data]));
     }
 
     if (typeOfWork === 'remote') {
-      const newEmloyee = accessorDatesGenerator(new Date(), name);
-      dispatch(addNewEmployee(newEmloyee));
+      const newEmployee = accessorDatesGenerator(new Date(), name);
+      dispatch(addNewEmployee(newEmployee));
+      localStorage.setItem('calendar', JSON.stringify([newEmployee, ...data]));
     }
 
     dispatch(setModalFlag(false));
