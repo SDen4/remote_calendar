@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import Modal from '../../components/Modal';
+import Modal from '../../ui/Modal';
 import Calendar from '../../components/Calendar';
 
 import { InitialStateType } from '../../store/types';
