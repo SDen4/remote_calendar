@@ -9,6 +9,7 @@ export interface InitialStateType {
   data: IData[];
   columns: any[];
   firstRangeDate: Date | null;
+  modalFlag: boolean;
 }
 
 export interface FetchSagaActionType {

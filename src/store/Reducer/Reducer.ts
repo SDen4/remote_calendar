@@ -2,6 +2,7 @@ import {
   SAVE_ALL_DATA,
   SAVE_ALL_COLUMNS,
   SAVE_FIRST_RANGE_DATE,
+  SET_MODAL_FLAG,
 } from '../constants';
 import { ActionsType } from '../actions';
 import { InitialStateType } from '../types';
@@ -17,6 +18,7 @@ const initialState: InitialStateType = {
   ],
   columns: [],
   firstRangeDate: null,
+  modalFlag: false,
 };
 
 export const Reducer = (
@@ -40,6 +42,12 @@ export const Reducer = (
       return {
         ...state,
         firstRangeDate: action.firstRangeDate,
+      };
+
+    case SET_MODAL_FLAG:
+      return {
+        ...state,
+        modalFlag: action.modalFlag,
       };
 
     default:

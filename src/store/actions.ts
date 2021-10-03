@@ -3,6 +3,7 @@ import {
   SAVE_ALL_DATA,
   SAVE_ALL_COLUMNS,
   SAVE_FIRST_RANGE_DATE,
+  SET_MODAL_FLAG,
 } from './constants';
 import { IData } from './types';
 
@@ -34,13 +35,22 @@ export const saveFirstRangeDate = (firstRangeDate: Date) => {
   } as const;
 };
 
+export const setModalFlag = (modalFlag: boolean) => {
+  return {
+    type: SET_MODAL_FLAG,
+    modalFlag,
+  } as const;
+};
+
 type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
 type saveFirstRangeDateType = ReturnType<typeof saveFirstRangeDate>;
+type setModalFlagType = ReturnType<typeof setModalFlag>;
 
 export type ActionsType =
   | FetchSagaType
   | saveAllDataType
   | saveAllColumnsType
-  | saveFirstRangeDateType;
+  | saveFirstRangeDateType
+  | setModalFlagType;
