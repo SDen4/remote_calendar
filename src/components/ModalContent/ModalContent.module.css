@@ -1,0 +1,64 @@
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.modalContent h2 {
+  margin-top: 0;
+}
+
+.form {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.labelWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.labelWrapper label {
+  margin-right: 10px;
+}
+
+.labelWrapper input {
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  color: steelblue;
+  font-size: 14px;
+  padding: 3px 10px;
+}
+
+.labelWrapper > label {
+  text-align: left;
+  width: 50%;
+}
+
+.labelWrapper:last-child {
+  margin-bottom: 0;
+}
+
+.radioWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 50%;
+}
+
+.radioWrapper label {
+  text-align: left;
+  min-width: 55px;
+}
+
+.radioWrapper div {
+  display: flex;
+  width: 100%;
+}

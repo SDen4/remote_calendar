@@ -4,16 +4,21 @@ import { IModal } from './types';
 
 import styles from './Modal.module.css';
 
-const Modal: React.FC<IModal> = ({ onCloseButtonClick }) => {
+const Modal: React.FC<IModal> = ({ onCloseButtonClick, modalContent }) => {
+  const InnerComponent = modalContent;
+
   const onCloseClick = () => {
     onCloseButtonClick();
   };
+
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.modal}>
-        <button type="button" onClick={onCloseClick}>
+        <button type="button" onClick={onCloseClick} className={styles.button}>
           <span />
         </button>
+
+        <InnerComponent />
       </div>
     </div>
   );

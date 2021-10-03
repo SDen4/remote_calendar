@@ -4,13 +4,15 @@ import clsx from 'clsx';
 
 import Modal from '../../ui/Modal';
 import Calendar from '../../components/Calendar';
+import ModalContent from '../../components/ModalContent';
 
 import { InitialStateType } from '../../store/types';
 import { fetchSaga, setModalFlag } from '../../store/actions';
 import { AppStateType } from '../../store/RootReducer';
 
-import styles from './Root.module.css';
 import Button from '../../ui/Button';
+
+import styles from './Root.module.css';
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,7 +36,9 @@ const Root: React.FC = () => {
 
   return (
     <div className={styles.root_wrapper}>
-      {store.modalFlag && <Modal onCloseButtonClick={onCloseModal} />}
+      {store.modalFlag && (
+        <Modal onCloseButtonClick={onCloseModal} modalContent={ModalContent} />
+      )}
 
       <header>
         <h1>Remote Calendar</h1>

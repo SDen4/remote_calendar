@@ -17,19 +17,19 @@
 .modal {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   align-items: center;
   background-color: rgba(211, 211, 211, 0.7);
   color: black;
   border-radius: 10px;
   min-width: 200px;
-  min-height: 200px;
+  min-height: 100px;
   padding: 15px 15px;
   text-align: center;
 }
 
-.modal button {
+.modal .button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -42,8 +42,8 @@
   cursor: pointer;
 }
 
-.modal button:after,
-.modal button:before {
+.modal .button:after,
+.modal .button:before {
   content: '';
   display: block;
   position: absolute;
@@ -55,20 +55,20 @@
   transition: 0.3s;
 }
 
-.modal button:after {
+.modal .button:after {
   transform: rotate(45deg);
 }
 
-.modal button:before {
+.modal .button:before {
   transform: rotate(-45deg);
 }
 
-.modal button:hover::after {
+.modal .button:hover::after {
   background-color: darkblue;
   transform: rotate(225deg);
 }
 
-.modal button:hover::before {
+.modal .button:hover::before {
   background-color: darkblue;
   transform: rotate(135deg);
 }
