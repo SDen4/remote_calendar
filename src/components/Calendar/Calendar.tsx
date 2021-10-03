@@ -66,7 +66,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                       className={clsx(i === 0 && styles.left, styles.tdInner)}
                     >
                       {cell.render('Cell')}
-                      &nbsp;
+
                       {i === 0 &&
                         cell.value !== 'Total office' &&
                         cell.value !== 'Total remote' && (

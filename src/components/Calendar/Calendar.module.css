@@ -50,6 +50,7 @@
   color: #fff;
   border: 0;
   padding: 0;
+  margin-left: 5px;
   cursor: pointer;
   transition: 0.3s;
 }
