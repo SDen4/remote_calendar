@@ -37,6 +37,8 @@
   background-color: black;
   text-align: left;
   white-space: nowrap;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .buttonDelRow {
@@ -50,7 +52,7 @@
   color: #fff;
   border: 0;
   padding: 0;
-  margin-left: 5px;
+  margin-left: 25px;
   cursor: pointer;
   transition: 0.3s;
 }
