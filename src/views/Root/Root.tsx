@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
+import Modal from '../../components/Modal';
 import Calendar from '../../components/Calendar';
 
 import { IData } from '../../store/types';
@@ -32,6 +33,8 @@ const Root: React.FC = () => {
 
   return (
     <div className={styles.root_wrapper}>
+      <Modal onCloseButtonClick={() => null} />
+
       <header>
         <h1>Remote Calendar</h1>
       </header>
