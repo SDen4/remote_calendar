@@ -1,14 +1,27 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
+import clsx from 'clsx';
 
+import { saveAllData } from '../../store/actions';
+
+import { IData } from '../../store/types';
 import { ICalendar } from './types';
 
 import styles from './Calendar.module.css';
-import clsx from 'clsx';
 
 const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
+  const dispatch = useDispatch();
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
+
+  const deleteRowHandler = (delRow: string) => {
+    const newData = data.filter((el: IData) => el.name !== delRow);
+
+    dispatch(saveAllData(newData));
+    localStorage.setItem('calendar', JSON.stringify(newData));
+  };
 
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -49,7 +62,23 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                     )}
                     key={`${cell} ${Math.random()}`}
                   >
-                    {cell.render('Cell')}
+                    <div
+                      className={clsx(i === 0 && styles.left, styles.tdInner)}
+                    >
+                      {cell.render('Cell')}
+                      &nbsp;
+                      {i === 0 &&
+                        cell.value !== 'Total office' &&
+                        cell.value !== 'Total remote' && (
+                          <button
+                            type="button"
+                            className={styles.buttonDelRow}
+                            onClick={() => deleteRowHandler(cell.value)}
+                          >
+                            <span />
+                          </button>
+                        )}
+                    </div>
                   </td>
                 );
               })}

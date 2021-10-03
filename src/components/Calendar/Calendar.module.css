@@ -35,4 +35,42 @@
   position: sticky;
   left: 0;
   background-color: black;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.buttonDelRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: orange;
+  color: #fff;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttonDelRow span {
+  width: 10px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.buttonDelRow:hover {
+  background-color: red;
+}
+
+.tdInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.left {
+  justify-content: space-between;
 }
