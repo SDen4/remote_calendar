@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
@@ -21,6 +22,17 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
 
     dispatch(saveAllData(newData));
     localStorage.setItem('calendar', JSON.stringify(newData));
+  };
+
+  const onCellClick = (cellId: string, rowId: string) => {
+    if (Object.keys(data[Number(rowId)]).includes(cellId)) {
+      delete data[Number(rowId)][cellId];
+    } else {
+      data[Number(rowId)][cellId] = 1;
+    }
+
+    dispatch(saveAllData(data));
+    localStorage.setItem('calendar', JSON.stringify(data));
   };
 
   return (
@@ -67,8 +79,21 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                     <div
                       className={clsx(i === 0 && styles.left, styles.tdInner)}
                     >
-                      {cell.render('Cell')}
-
+                      {i !== 0 &&
+                      row.index !== data.length - 1 &&
+                      row.index !== data.length - 2 ? (
+                        <button
+                          type="button"
+                          className={styles.cellButton}
+                          onClick={() =>
+                            onCellClick(cell.column.id, cell.row.id)
+                          }
+                        >
+                          {cell.render('Cell')}
+                        </button>
+                      ) : (
+                        cell.render('Cell')
+                      )}
                       {i === 0 &&
                         cell.value !== 'Total office' &&
                         cell.value !== 'Total remote' && (

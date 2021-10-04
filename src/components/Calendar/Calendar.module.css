@@ -89,4 +89,23 @@
 
 .hiddenCell2 div {
   margin-top: -20px;
+  text-align: center;
+}
+
+.cellButton {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  width: 18px;
+  height: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cellButton:hover {
+  background-color: steelblue;
+}
+
+.cellButton div {
+  color: #fff;
 }
