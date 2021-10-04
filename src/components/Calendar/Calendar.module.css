@@ -77,3 +77,16 @@
 .left {
   justify-content: space-between;
 }
+
+.hiddenCell {
+  border-bottom: 0;
+  /* background-color: transparent; */
+}
+
+.hiddenCell2 {
+  border-top: 0;
+}
+
+.hiddenCell2 div {
+  margin-top: -20px;
+}

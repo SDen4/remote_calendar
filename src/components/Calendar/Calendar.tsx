@@ -26,7 +26,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
       <thead>
-        {headerGroups.map((headerGroup) => (
+        {headerGroups.map((headerGroup, j) => (
           <tr
             {...headerGroup.getHeaderGroupProps()}
             key={`${headerGroup} ${Math.random()}`}
@@ -36,6 +36,8 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                 {...column.getHeaderProps()}
                 className={clsx(
                   i === 0 && styles.firstCell,
+                  i === 0 && j === 0 && styles.hiddenCell,
+                  i === 0 && j === 1 && styles.hiddenCell2,
                   styles.tableHeader,
                 )}
                 key={`${column} ${Math.random()}`}
