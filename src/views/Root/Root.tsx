@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
@@ -6,6 +6,7 @@ import Modal from '../../ui/Modal';
 import Button from '../../ui/Button';
 import Calendar from '../../components/Calendar';
 import ModalContent from '../../components/ModalContent';
+import ModalDelContent from '../../components/ModalDelContent';
 
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
@@ -20,6 +21,8 @@ const Root: React.FC = () => {
     (store) => store.reducer,
   );
 
+  const [delModal, setDelModal] = useState<boolean>(false);
+
   useEffect(() => {
     dispatch(fetchSaga(store.data));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,21 +36,39 @@ const Root: React.FC = () => {
     dispatch(setModalFlag(false));
   };
 
+  const onToggleDelModal = () => {
+    setDelModal(!delModal);
+  };
+
   return (
     <div className={styles.root_wrapper}>
       {store.modalFlag && (
         <Modal onCloseButtonClick={onCloseModal} modalContent={ModalContent} />
       )}
 
+      {delModal && (
+        <Modal
+          onCloseButtonClick={onToggleDelModal}
+          modalContent={ModalDelContent}
+        />
+      )}
+
       <header>
         <h1>Remote Calendar</h1>
       </header>
 
-      <section className={styles.section_wrapper}>
+      <section className={clsx(styles.section_wrapper, styles.buttons_wrapper)}>
         <Button
           buttonText="Add employee"
           buttonType="button"
           onButtonClick={onOpenModal}
+        />
+
+        <Button
+          buttonText="Delete all employees"
+          buttonType="button"
+          onButtonClick={onToggleDelModal}
+          stylesButton={styles.deleteButton}
         />
       </section>
 

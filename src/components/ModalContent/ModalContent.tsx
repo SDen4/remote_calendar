@@ -47,7 +47,7 @@ const ModalContent: React.FC = () => {
 
   return (
     <div className={styles.modalContent}>
-      <h2>Add a new eployee</h2>
+      <h2>Add a new employee</h2>
 
       <form onSubmit={onSubmitHahdler} className={styles.form}>
         <div className={styles.labelWrapper}>

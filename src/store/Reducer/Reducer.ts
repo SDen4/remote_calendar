@@ -5,18 +5,14 @@ import {
   SET_MODAL_FLAG,
   ADD_NEW_EMPLOYEE,
 } from '../constants';
+
+import { initialData } from '../../constants/table';
+
 import { ActionsType } from '../actions';
 import { InitialStateType } from '../types';
 
 const initialState: InitialStateType = {
-  data: [
-    {
-      name: 'Total office',
-    },
-    {
-      name: 'Total remote',
-    },
-  ],
+  data: initialData,
   columns: [],
   firstRangeDate: null,
   modalFlag: false,

@@ -18,7 +18,7 @@ const Modal: React.FC<IModal> = ({ onCloseButtonClick, modalContent }) => {
           <span />
         </button>
 
-        <InnerComponent />
+        <InnerComponent onCloseClick={onCloseClick} />
       </div>
     </div>
   );
