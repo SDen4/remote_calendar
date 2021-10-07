@@ -77,6 +77,11 @@ const Root: React.FC = () => {
       >
         <Calendar data={store.data} columns={store.columns} />
       </section>
+
+      <section className={clsx(styles.section_wrapper, styles.sectionTotal)}>
+        <span>Total employees:</span>
+        <span>{store.data.length - 2}</span>
+      </section>
     </div>
   );
 };

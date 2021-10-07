@@ -52,3 +52,12 @@
 .deleteButton:hover {
   background-color: red;
 }
+
+.sectionTotal span {
+  font-size: 13px;
+}
+
+.sectionTotal span:last-child {
+  margin-left: 10px;
+  color: steelblue;
+}
