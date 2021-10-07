@@ -108,4 +108,13 @@
 
 .cellButton div {
   color: #fff;
+  transition: 0.3s;
+}
+
+.cellButtonFull {
+  background-color: #fff;
+}
+
+.cellButtonFull:hover div {
+  color: steelblue;
 }

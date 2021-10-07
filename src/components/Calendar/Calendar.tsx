@@ -86,7 +86,10 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                       row.index !== data.length - 2 ? (
                         <button
                           type="button"
-                          className={styles.cellButton}
+                          className={clsx(
+                            styles.cellButton,
+                            cell.value === 1 && styles.cellButtonFull,
+                          )}
                           onClick={() =>
                             onCellClick(cell.column.id, cell.row.id)
                           }
