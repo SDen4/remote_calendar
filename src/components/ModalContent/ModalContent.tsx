@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions';
@@ -13,6 +13,11 @@ import styles from './ModalContent.module.css';
 
 const ModalContent: React.FC = () => {
   const dispatch = useDispatch();
+  const ref: any = useRef(null);
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   const data = useSelector<AppStateType, IData[]>(
     (store) => store.reducer.data,
@@ -52,7 +57,7 @@ const ModalContent: React.FC = () => {
       <form onSubmit={onSubmitHahdler} className={styles.form}>
         <div className={styles.labelWrapper}>
           <label>Name: </label>
-          <input type="text" onChange={onChangeNameHandler} />
+          <input type="text" onChange={onChangeNameHandler} ref={ref} />
         </div>
 
         <div className={styles.labelWrapper}>
