@@ -25,14 +25,16 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   };
 
   const onCellClick = (cellId: string, rowId: string) => {
-    if (Object.keys(data[Number(rowId)]).includes(cellId)) {
-      delete data[Number(rowId)][cellId];
+    let newData: IData[] = data.concat();
+
+    if (Object.keys(newData[Number(rowId)]).includes(cellId)) {
+      delete newData[Number(rowId)][cellId];
     } else {
-      data[Number(rowId)][cellId] = 1;
+      newData[Number(rowId)][cellId] = 1;
     }
 
-    dispatch(saveAllData(data));
-    localStorage.setItem('calendar', JSON.stringify(data));
+    dispatch(saveAllData(newData));
+    localStorage.setItem('calendar', JSON.stringify(newData));
   };
 
   return (

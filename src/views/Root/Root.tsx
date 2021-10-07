@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
 import Modal from '../../ui/Modal';
+import Button from '../../ui/Button';
 import Calendar from '../../components/Calendar';
 import ModalContent from '../../components/ModalContent';
 
+import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
 import { fetchSaga, setModalFlag } from '../../store/actions';
-import { AppStateType } from '../../store/RootReducer';
-
-import Button from '../../ui/Button';
 
 import styles from './Root.module.css';
 

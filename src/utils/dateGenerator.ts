@@ -3,7 +3,7 @@ import { dateFormatter } from './dateFormatter';
 const dateGenerator: any = (date: Date) => {
   const currentDate = date;
   const datesRange: any[] = [];
-  const datesLength = 365; // days in initial range
+  const datesLength = 60; // days in initial range
 
   for (let i = 0; i < datesLength; i++) {
     datesRange.push({
