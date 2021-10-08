@@ -62,3 +62,19 @@
   display: flex;
   width: 100%;
 }
+
+.buttons_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.deleteButton {
+  background-color: orange;
+  transition: 0.3s;
+}
+
+.deleteButton:hover {
+  background-color: red;
+}

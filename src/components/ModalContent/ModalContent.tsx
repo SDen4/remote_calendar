@@ -50,6 +50,12 @@ const ModalContent: React.FC = () => {
     dispatch(setModalFlag(false));
   };
 
+  const onCloseModal = () => {
+    setName('');
+    setTypeOfWork('office');
+    dispatch(setModalFlag(false));
+  };
+
   return (
     <div className={styles.modalContent}>
       <h2>Add a new employee</h2>
@@ -88,11 +94,20 @@ const ModalContent: React.FC = () => {
         </div>
       </form>
 
-      <Button
-        buttonText="Add"
-        buttonType="submit"
-        onButtonClick={onSubmitHahdler}
-      />
+      <div className={styles.buttons_wrapper}>
+        <Button
+          buttonText="Add"
+          buttonType="submit"
+          onButtonClick={onSubmitHahdler}
+        />
+
+        <Button
+          buttonText="Cancel"
+          buttonType="button"
+          onButtonClick={onCloseModal}
+          stylesButton={styles.deleteButton}
+        />
+      </div>
     </div>
   );
 };
