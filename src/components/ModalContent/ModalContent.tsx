@@ -31,10 +31,14 @@ const ModalContent: React.FC = () => {
   };
 
   const onChangeNameHandler = (event: any) => {
-    setName(event.target.value);
+    setName(event.target.value.trim());
   };
 
   const onSubmitHahdler = () => {
+    if (!name) {
+      return;
+    }
+
     if (typeOfWork === 'office') {
       const newEmployee = { name };
       dispatch(addNewEmployee(newEmployee));
