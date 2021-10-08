@@ -11,12 +11,14 @@ const Button: React.FC<IButton> = ({
   buttonType,
   onButtonClick,
   stylesButton,
+  disabled,
 }) => {
   return (
     <button
       type={buttonType}
       onClick={onButtonClick}
       className={clsx(styles.button, stylesButton)}
+      disabled={disabled}
     >
       {buttonText}
     </button>

@@ -3,4 +3,5 @@ export interface IButton {
   buttonType: 'button' | 'submit' | 'reset';
   onButtonClick: () => void;
   stylesButton?: string;
+  disabled?: boolean;
 }

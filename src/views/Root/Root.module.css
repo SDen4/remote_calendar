@@ -61,3 +61,12 @@
   margin-left: 10px;
   color: steelblue;
 }
+
+.disabledButton {
+  background-color: gray;
+  cursor: default;
+}
+
+.disabledButton:hover {
+  background-color: gray;
+}

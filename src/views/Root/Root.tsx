@@ -65,10 +65,16 @@ const Root: React.FC = () => {
         />
 
         <Button
-          buttonText="Delete all employees"
+          buttonText={
+            store.data.length === 3 ? 'Delete employee' : 'Delete all employees'
+          }
           buttonType="button"
           onButtonClick={onToggleDelModal}
-          stylesButton={styles.deleteButton}
+          stylesButton={clsx(
+            styles.deleteButton,
+            store.data.length <= 2 && styles.disabledButton,
+          )}
+          disabled={store.data.length <= 2}
         />
       </section>
 
