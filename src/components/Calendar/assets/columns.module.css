@@ -24,6 +24,10 @@
   padding-right: 15px;
 }
 
+.headerTopCell {
+  white-space: nowrap;
+}
+
 .headerTopCell:hover {
   background-color: transparent;
 }
