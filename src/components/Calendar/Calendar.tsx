@@ -6,6 +6,8 @@ import clsx from 'clsx';
 
 import { saveAllData } from '../../store/actions';
 
+import { dateFormatter } from '../../utils/dateFormatter';
+
 import { IData } from '../../store/types';
 import { ICalendar } from './types';
 
@@ -13,6 +15,8 @@ import styles from './Calendar.module.css';
 
 const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   const dispatch = useDispatch();
+
+  const currentDate = dateFormatter(new Date());
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
@@ -75,6 +79,13 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                     className={clsx(
                       i === 0 && styles.firstCell,
                       styles.tableCell,
+                      String(cell.column.id.slice(9)) ===
+                        String(
+                          `${currentDate.slice(0, 2)}${currentDate.slice(
+                            3,
+                            5,
+                          )}${currentDate.slice(6, 8)}`,
+                        ) && styles.currentDate,
                     )}
                     key={`${cell} ${Math.random()}`}
                   >

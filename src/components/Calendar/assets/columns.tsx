@@ -5,6 +5,7 @@ import dateGenerator from '../../../utils/dateGenerator';
 import monthsNames from '../../../utils/monthsNames';
 
 import styles from './columns.module.css';
+import { dateFormatter } from '../../../utils/dateFormatter';
 
 const columnGenerator = (date: Date) => {
   if (!date) {
@@ -12,6 +13,7 @@ const columnGenerator = (date: Date) => {
   }
 
   const datesRange = dateGenerator(new Date(date));
+  const currentDate = dateFormatter(new Date());
 
   let monthDays: any = [];
   const columns: any = [
@@ -36,6 +38,7 @@ const columnGenerator = (date: Date) => {
                 ? styles.weekend
                 : '',
               styles.cell,
+              datesRange[i].date === currentDate && styles.currentDate,
             )}
           >
             {datesRange[i].date.slice(0, 2)}

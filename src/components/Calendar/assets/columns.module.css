@@ -27,3 +27,11 @@
 .headerTopCell:hover {
   background-color: transparent;
 }
+
+.currentDate {
+  background-color: steelblue;
+}
+
+.currentDateEmpty {
+  border: 1px solid steelblue;
+}

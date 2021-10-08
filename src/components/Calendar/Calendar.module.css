@@ -118,3 +118,7 @@
 .cellButtonFull:hover div {
   color: steelblue;
 }
+
+.currentDate {
+  border-color: steelblue;
+}
