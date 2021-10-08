@@ -49,14 +49,14 @@ const columnGenerator = (date: Date) => {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return <div>{sortArr.length}</div>;
+            return sortArr.length;
           }
 
           if (cell.row.index === cell.rows.length - 2) {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return <div>{cell.rows.length - sortArr.length - 2}</div>;
+            return cell.rows.length - sortArr.length - 2;
           }
 
           return <div>{cell.value}</div>;
@@ -84,14 +84,14 @@ const columnGenerator = (date: Date) => {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return <div>{sortArr.length}</div>;
+            return sortArr.length;
           }
 
           if (cell.row.index === cell.rows.length - 2) {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return <div>{cell.rows.length - sortArr.length - 2}</div>;
+            return cell.rows.length - sortArr.length - 2;
           }
           return <div>{cell.value}</div>;
         },

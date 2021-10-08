@@ -40,6 +40,14 @@ const Root: React.FC = () => {
     setDelModal(!delModal);
   };
 
+  const onChangeMaxEmployees = (value: any) => {
+    if (value < 0) {
+      return;
+    }
+    // eslint-disable-next-line no-console
+    console.log(value);
+  };
+
   return (
     <div className={styles.root_wrapper}>
       {store.modalFlag && (
@@ -87,6 +95,17 @@ const Root: React.FC = () => {
       <section className={clsx(styles.section_wrapper, styles.sectionTotal)}>
         <span>Total employees:</span>
         <span>{store.data.length - 2}</span>
+      </section>
+
+      <section
+        className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
+      >
+        <span>Set max employees in office</span>
+        <input
+          type="number"
+          min="0"
+          onChange={(event) => onChangeMaxEmployees(event?.target.value)}
+        />
       </section>
     </div>
   );

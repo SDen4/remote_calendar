@@ -70,3 +70,24 @@
 .disabledButton:hover {
   background-color: gray;
 }
+
+.sectionMaxEmployees {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.sectionMaxEmployees span {
+  font-size: 13px;
+  margin-right: 15px;
+}
+
+.sectionMaxEmployees input {
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+  color: steelblue;
+  font-size: 14px;
+  padding: 3px 10px;
+  max-width: 40px;
+}
