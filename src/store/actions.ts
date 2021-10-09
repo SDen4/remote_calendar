@@ -5,6 +5,7 @@ import {
   SAVE_FIRST_RANGE_DATE,
   SET_MODAL_FLAG,
   ADD_NEW_EMPLOYEE,
+  SAVE_MAX_VALUE,
 } from './constants';
 import { IData } from './types';
 
@@ -50,12 +51,20 @@ export const addNewEmployee = (newEmployee: IData) => {
   } as const;
 };
 
+export const saveMaxValue = (maxValue: number) => {
+  return {
+    type: SAVE_MAX_VALUE,
+    maxValue,
+  } as const;
+};
+
 type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
 type saveFirstRangeDateType = ReturnType<typeof saveFirstRangeDate>;
 type setModalFlagType = ReturnType<typeof setModalFlag>;
 type addNewEmployeeType = ReturnType<typeof addNewEmployee>;
+type saveMaxValueType = ReturnType<typeof saveMaxValue>;
 
 export type ActionsType =
   | FetchSagaType
@@ -63,4 +72,5 @@ export type ActionsType =
   | saveAllColumnsType
   | saveFirstRangeDateType
   | setModalFlagType
-  | addNewEmployeeType;
+  | addNewEmployeeType
+  | saveMaxValueType;

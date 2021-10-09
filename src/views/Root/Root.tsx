@@ -10,7 +10,7 @@ import ModalDelContent from '../../components/ModalDelContent';
 
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
-import { fetchSaga, setModalFlag } from '../../store/actions';
+import { fetchSaga, saveMaxValue, setModalFlag } from '../../store/actions';
 
 import styles from './Root.module.css';
 
@@ -44,6 +44,9 @@ const Root: React.FC = () => {
     if (value < 0) {
       return;
     }
+    dispatch(saveMaxValue(value));
+    localStorage.setItem('maxValue', value);
+
     // eslint-disable-next-line no-console
     console.log(value);
   };
@@ -104,6 +107,7 @@ const Root: React.FC = () => {
         <input
           type="number"
           min="0"
+          value={store.maxValue}
           onChange={(event) => onChangeMaxEmployees(event?.target.value)}
         />
       </section>

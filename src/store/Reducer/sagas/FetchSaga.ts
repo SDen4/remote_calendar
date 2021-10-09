@@ -2,7 +2,12 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import columnGenerator from '../../../components/Calendar/assets/columns';
 
-import { saveAllColumns, saveAllData, saveFirstRangeDate } from '../../actions';
+import {
+  saveAllColumns,
+  saveAllData,
+  saveFirstRangeDate,
+  saveMaxValue,
+} from '../../actions';
 
 import { FETCH_SAGA } from '../../constants';
 
@@ -16,6 +21,11 @@ function* sagaWorker(action: FetchSagaActionType) {
     const calendarDataFromLocalStorage: IData[] = yield JSON.parse(
       localStorage.getItem('calendar') || '[]',
     );
+    const maxValue: number = yield localStorage.getItem('maxValue');
+
+    if (maxValue) {
+      yield put(saveMaxValue(maxValue));
+    }
 
     let initialColumns: any[] = yield [];
 

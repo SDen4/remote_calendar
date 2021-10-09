@@ -10,6 +10,7 @@ export interface InitialStateType {
   columns: any[];
   firstRangeDate: Date | null;
   modalFlag: boolean;
+  maxValue: number;
 }
 
 export interface FetchSagaActionType {
