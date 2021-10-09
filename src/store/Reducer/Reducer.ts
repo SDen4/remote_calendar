@@ -17,7 +17,7 @@ const initialState: InitialStateType = {
   columns: [],
   firstRangeDate: null,
   modalFlag: false,
-  maxValue: 0,
+  maxValue: 1,
 };
 
 export const Reducer = (
