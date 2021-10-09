@@ -7,6 +7,7 @@ import Button from '../../ui/Button';
 import Calendar from '../../components/Calendar';
 import ModalContent from '../../components/ModalContent';
 import ModalDelContent from '../../components/ModalDelContent';
+import columnGenerator from '../../components/Calendar/assets/columns';
 
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
@@ -24,7 +25,7 @@ const Root: React.FC = () => {
   const [delModal, setDelModal] = useState<boolean>(false);
 
   useEffect(() => {
-    dispatch(fetchSaga(store.data));
+    dispatch(fetchSaga(store.data, store.maxValue));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -44,12 +45,16 @@ const Root: React.FC = () => {
     if (value < 0) {
       return;
     }
-    dispatch(saveMaxValue(value));
-    localStorage.setItem('maxValue', value);
 
-    // eslint-disable-next-line no-console
-    console.log(value);
+    localStorage.setItem('maxValue', value);
+    dispatch(saveMaxValue(value));
+    dispatch(fetchSaga(store.data, value));
   };
+
+  useEffect(() => {
+    // @ts-ignore
+    return columnGenerator(store.firstRangeDate, store.maxValue);
+  }, [store.firstRangeDate, store.maxValue]);
 
   return (
     <div className={styles.root_wrapper}>

@@ -2,7 +2,7 @@ import { dateFormatter } from './dateFormatter';
 
 const accessorDatesGenerator: any = (date: Date, name: string) => {
   const currentDate = date;
-  const datesLength = 365; // days in initial range
+  const datesLength = 90; // days in initial range
 
   let newObj: any = {};
 

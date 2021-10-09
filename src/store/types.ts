@@ -16,4 +16,5 @@ export interface InitialStateType {
 export interface FetchSagaActionType {
   type: typeof FETCH_SAGA;
   data: IData[];
+  maxValue: number;
 }

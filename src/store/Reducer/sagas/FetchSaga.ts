@@ -30,10 +30,13 @@ function* sagaWorker(action: FetchSagaActionType) {
     let initialColumns: any[] = yield [];
 
     if (firstRangeDateFromLocalStorage) {
-      initialColumns = yield columnGenerator(firstRangeDateFromLocalStorage);
+      initialColumns = yield columnGenerator(
+        firstRangeDateFromLocalStorage,
+        maxValue,
+      );
       yield put(saveFirstRangeDate(firstRangeDateFromLocalStorage));
     } else {
-      initialColumns = yield columnGenerator(new Date());
+      initialColumns = yield columnGenerator(new Date(), action.maxValue);
       yield localStorage.setItem('firstRangeDate', String(new Date()));
     }
 

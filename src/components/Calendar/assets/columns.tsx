@@ -7,7 +7,7 @@ import monthsNames from '../../../utils/monthsNames';
 import styles from './columns.module.css';
 import { dateFormatter } from '../../../utils/dateFormatter';
 
-const columnGenerator = (date: Date) => {
+const columnGenerator = (date: Date, maxValue: number) => {
   if (!date) {
     return [];
   }
@@ -59,7 +59,12 @@ const columnGenerator = (date: Date) => {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return cell.rows.length - sortArr.length - 2;
+            const value = cell.rows.length - sortArr.length - 2;
+            return (
+              <div className={clsx(value > maxValue && styles.red)}>
+                {value}
+              </div>
+            );
           }
 
           return <div>{cell.value}</div>;
@@ -94,7 +99,12 @@ const columnGenerator = (date: Date) => {
             const sortArr = cell.data.filter((el: any) =>
               Object.keys(el).join(' ').includes(cell.column.id),
             );
-            return cell.rows.length - sortArr.length - 2;
+            const value = cell.rows.length - sortArr.length - 2;
+            return (
+              <div className={clsx(value > maxValue && styles.red)}>
+                {value}
+              </div>
+            );
           }
           return <div>{cell.value}</div>;
         },

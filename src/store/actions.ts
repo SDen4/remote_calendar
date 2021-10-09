@@ -9,10 +9,11 @@ import {
 } from './constants';
 import { IData } from './types';
 
-export const fetchSaga = (data: IData[]) => {
+export const fetchSaga = (data: IData[], maxValue: number) => {
   return {
     type: FETCH_SAGA,
     data,
+    maxValue,
   } as const;
 };
 

@@ -39,3 +39,8 @@
 .currentDateEmpty {
   border: 1px solid steelblue;
 }
+
+.red {
+  color: red;
+  font-weight: bold;
+}
