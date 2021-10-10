@@ -11,10 +11,12 @@ export interface InitialStateType {
   firstRangeDate: Date | null;
   modalFlag: boolean;
   maxValue: number;
+  columnsQuantity: number;
 }
 
 export interface FetchSagaActionType {
   type: typeof FETCH_SAGA;
   data: IData[];
   maxValue: number;
+  columnsQuantity: number;
 }

@@ -5,6 +5,7 @@ import {
   SET_MODAL_FLAG,
   ADD_NEW_EMPLOYEE,
   SAVE_MAX_VALUE,
+  ADD_COLUMNS_QUANTITY,
 } from '../constants';
 
 import { initialData } from '../../constants/table';
@@ -18,6 +19,7 @@ const initialState: InitialStateType = {
   firstRangeDate: null,
   modalFlag: false,
   maxValue: 1,
+  columnsQuantity: 90,
 };
 
 export const Reducer = (
@@ -59,6 +61,12 @@ export const Reducer = (
       return {
         ...state,
         maxValue: action.maxValue,
+      };
+
+    case ADD_COLUMNS_QUANTITY:
+      return {
+        ...state,
+        columnsQuantity: action.columnsQuantity,
       };
 
     default:

@@ -1,9 +1,8 @@
 import { dateFormatter } from './dateFormatter';
 
-const dateGenerator: any = (date: Date) => {
+const dateGenerator: any = (date: Date, datesLength: number) => {
   const currentDate = date;
   const datesRange: any[] = [];
-  const datesLength = 90; // days in initial range
 
   for (let i = 0; i < datesLength; i++) {
     datesRange.push({

@@ -11,7 +11,12 @@ import columnGenerator from '../../components/Calendar/assets/columns';
 
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
-import { fetchSaga, saveMaxValue, setModalFlag } from '../../store/actions';
+import {
+  fetchSaga,
+  saveMaxValue,
+  setColumnsQuantity,
+  setModalFlag,
+} from '../../store/actions';
 
 import styles from './Root.module.css';
 
@@ -25,7 +30,7 @@ const Root: React.FC = () => {
   const [delModal, setDelModal] = useState<boolean>(false);
 
   useEffect(() => {
-    dispatch(fetchSaga(store.data, store.maxValue));
+    dispatch(fetchSaga(store.data, store.maxValue, store.columnsQuantity));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -48,13 +53,20 @@ const Root: React.FC = () => {
 
     localStorage.setItem('maxValue', value);
     dispatch(saveMaxValue(value));
-    dispatch(fetchSaga(store.data, value));
+    dispatch(fetchSaga(store.data, value, store.columnsQuantity));
   };
 
   useEffect(() => {
     // @ts-ignore
-    return columnGenerator(store.firstRangeDate, store.maxValue);
+    return columnGenerator(store.firstRangeDate, store.maxValue, 90);
   }, [store.firstRangeDate, store.maxValue]);
+
+  const addPeriodHandler = () => {
+    const newColumnsQuantity = store.columnsQuantity + 90;
+    localStorage.setItem('columnsQuantity', String(newColumnsQuantity));
+    dispatch(setColumnsQuantity(newColumnsQuantity));
+    dispatch(fetchSaga(store.data, store.maxValue, newColumnsQuantity));
+  };
 
   return (
     <div className={styles.root_wrapper}>
@@ -98,6 +110,14 @@ const Root: React.FC = () => {
         className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
       >
         <Calendar data={store.data} columns={store.columns} />
+        <div className={styles.addPeriodButtonWrapper}>
+          <Button
+            buttonText="Add period"
+            buttonType="button"
+            stylesButton={styles.addPeriodButton}
+            onButtonClick={addPeriodHandler}
+          />
+        </div>
       </section>
 
       <section className={clsx(styles.section_wrapper, styles.sectionTotal)}>

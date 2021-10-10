@@ -6,14 +6,20 @@ import {
   SET_MODAL_FLAG,
   ADD_NEW_EMPLOYEE,
   SAVE_MAX_VALUE,
+  ADD_COLUMNS_QUANTITY,
 } from './constants';
 import { IData } from './types';
 
-export const fetchSaga = (data: IData[], maxValue: number) => {
+export const fetchSaga = (
+  data: IData[],
+  maxValue: number,
+  columnsQuantity: number,
+) => {
   return {
     type: FETCH_SAGA,
     data,
     maxValue,
+    columnsQuantity,
   } as const;
 };
 
@@ -59,6 +65,13 @@ export const saveMaxValue = (maxValue: number) => {
   } as const;
 };
 
+export const setColumnsQuantity = (columnsQuantity: number) => {
+  return {
+    type: ADD_COLUMNS_QUANTITY,
+    columnsQuantity,
+  } as const;
+};
+
 type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
@@ -66,6 +79,7 @@ type saveFirstRangeDateType = ReturnType<typeof saveFirstRangeDate>;
 type setModalFlagType = ReturnType<typeof setModalFlag>;
 type addNewEmployeeType = ReturnType<typeof addNewEmployee>;
 type saveMaxValueType = ReturnType<typeof saveMaxValue>;
+type setColumnsQuantityType = ReturnType<typeof setColumnsQuantity>;
 
 export type ActionsType =
   | FetchSagaType
@@ -74,4 +88,5 @@ export type ActionsType =
   | saveFirstRangeDateType
   | setModalFlagType
   | addNewEmployeeType
-  | saveMaxValueType;
+  | saveMaxValueType
+  | setColumnsQuantityType;

@@ -91,3 +91,19 @@
   padding: 3px 10px;
   max-width: 40px;
 }
+
+.addPeriodButtonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.addPeriodButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}

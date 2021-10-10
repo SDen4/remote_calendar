@@ -7,6 +7,7 @@ import {
   saveAllData,
   saveFirstRangeDate,
   saveMaxValue,
+  setColumnsQuantity,
 } from '../../actions';
 
 import { FETCH_SAGA } from '../../constants';
@@ -22,6 +23,9 @@ function* sagaWorker(action: FetchSagaActionType) {
       localStorage.getItem('calendar') || '[]',
     );
     const maxValue: number = yield localStorage.getItem('maxValue');
+    const columnsQuantityFromLocalStorage: number = yield localStorage.getItem(
+      'columnsQuantity',
+    );
 
     if (maxValue) {
       yield put(saveMaxValue(maxValue));
@@ -29,14 +33,28 @@ function* sagaWorker(action: FetchSagaActionType) {
 
     let initialColumns: any[] = yield [];
 
+    if (columnsQuantityFromLocalStorage) {
+      yield put(setColumnsQuantity(Number(columnsQuantityFromLocalStorage)));
+    } else {
+      yield localStorage.setItem(
+        'columnsQuantity',
+        String(action.columnsQuantity),
+      );
+    }
+
     if (firstRangeDateFromLocalStorage) {
       initialColumns = yield columnGenerator(
         firstRangeDateFromLocalStorage,
         maxValue,
+        columnsQuantityFromLocalStorage || action.columnsQuantity,
       );
       yield put(saveFirstRangeDate(firstRangeDateFromLocalStorage));
     } else {
-      initialColumns = yield columnGenerator(new Date(), action.maxValue);
+      initialColumns = yield columnGenerator(
+        new Date(),
+        action.maxValue,
+        columnsQuantityFromLocalStorage || action.columnsQuantity,
+      );
       yield localStorage.setItem('firstRangeDate', String(new Date()));
     }
 

@@ -7,12 +7,12 @@ import monthsNames from '../../../utils/monthsNames';
 import styles from './columns.module.css';
 import { dateFormatter } from '../../../utils/dateFormatter';
 
-const columnGenerator = (date: Date, maxValue: number) => {
+const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
   if (!date) {
     return [];
   }
 
-  const datesRange = dateGenerator(new Date(date));
+  const datesRange = dateGenerator(new Date(date), datesLength);
   const currentDate = dateFormatter(new Date());
 
   let monthDays: any = [];
@@ -122,7 +122,6 @@ const columnGenerator = (date: Date, maxValue: number) => {
       monthDays.length = 0;
     }
   }
-
   return columns;
 };
 
