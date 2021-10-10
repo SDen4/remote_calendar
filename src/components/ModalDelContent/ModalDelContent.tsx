@@ -1,6 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { saveAllData } from '../../store/actions';
+import {
+  fetchSaga,
+  saveAllData,
+  setColumnsQuantity,
+} from '../../store/actions';
 
 import Button from '../../ui/Button';
 
@@ -17,6 +21,11 @@ const ModalDelContent: React.FC<IModalDelContent> = ({ onCloseClick }) => {
   const deleteHandler = () => {
     dispatch(saveAllData(initialData));
     localStorage.setItem('calendar', JSON.stringify(initialData));
+
+    localStorage.setItem('columnsQuantity', '90');
+    dispatch(setColumnsQuantity(90));
+    dispatch(fetchSaga(initialData, 1, 90));
+
     onCloseModalFunc();
   };
 

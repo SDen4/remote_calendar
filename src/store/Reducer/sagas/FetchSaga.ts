@@ -28,7 +28,9 @@ function* sagaWorker(action: FetchSagaActionType) {
     );
 
     if (maxValue) {
-      yield put(saveMaxValue(maxValue));
+      yield put(saveMaxValue(Number(maxValue)));
+    } else {
+      yield localStorage.setItem('maxValue', String(action.maxValue));
     }
 
     let initialColumns: any[] = yield [];
