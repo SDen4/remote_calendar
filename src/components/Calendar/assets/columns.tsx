@@ -14,6 +14,7 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
 
   const datesRange = dateGenerator(new Date(date), datesLength);
   const currentDate = dateFormatter(new Date());
+  const maxValueIn = maxValue || 1;
 
   let monthDays: any = [];
   const columns: any = [
@@ -61,7 +62,7 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
             );
             const value = cell.rows.length - sortArr.length - 2;
             return (
-              <div className={clsx(value > maxValue && styles.red)}>
+              <div className={clsx(value > maxValueIn && styles.red)}>
                 {value}
               </div>
             );
@@ -101,7 +102,7 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
             );
             const value = cell.rows.length - sortArr.length - 2;
             return (
-              <div className={clsx(value > maxValue && styles.red)}>
+              <div className={clsx(value > maxValueIn && styles.red)}>
                 {value}
               </div>
             );

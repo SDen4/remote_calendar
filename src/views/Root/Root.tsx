@@ -46,12 +46,12 @@ const Root: React.FC = () => {
     setDelModal(!delModal);
   };
 
-  const onChangeMaxEmployees = (value: any) => {
+  const onChangeMaxEmployees = (value: number) => {
     if (value < 0) {
       return;
     }
 
-    localStorage.setItem('maxValue', value);
+    localStorage.setItem('maxValue', String(value));
     dispatch(saveMaxValue(value));
     dispatch(fetchSaga(store.data, value, store.columnsQuantity));
   };
@@ -92,50 +92,63 @@ const Root: React.FC = () => {
           onButtonClick={onOpenModal}
         />
 
-        <Button
-          buttonText={
-            store.data.length === 3 ? 'Delete employee' : 'Delete all employees'
-          }
-          buttonType="button"
-          onButtonClick={onToggleDelModal}
-          stylesButton={clsx(
-            styles.deleteButton,
-            store.data.length <= 2 && styles.disabledButton,
-          )}
-          disabled={store.data.length <= 2}
-        />
-      </section>
-
-      <section
-        className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
-      >
-        <Calendar data={store.data} columns={store.columns} />
-        <div className={styles.addPeriodButtonWrapper}>
+        {store.data.length > 2 && (
           <Button
-            buttonText="Add period"
+            buttonText={
+              store.data.length === 3
+                ? 'Delete employee'
+                : 'Delete all employees'
+            }
             buttonType="button"
-            stylesButton={styles.addPeriodButton}
-            onButtonClick={addPeriodHandler}
+            onButtonClick={onToggleDelModal}
+            stylesButton={clsx(
+              styles.deleteButton,
+              store.data.length <= 2 && styles.disabledButton,
+            )}
+            disabled={store.data.length <= 2}
           />
-        </div>
+        )}
       </section>
 
-      <section className={clsx(styles.section_wrapper, styles.sectionTotal)}>
-        <span>Total employees:</span>
-        <span>{store.data.length - 2}</span>
-      </section>
+      {store.data.length > 2 && (
+        <>
+          <section
+            className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
+          >
+            <Calendar data={store.data} columns={store.columns} />
 
-      <section
-        className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
-      >
-        <span>Set max employees in office</span>
-        <input
-          type="number"
-          min="0"
-          value={store.maxValue}
-          onChange={(event) => onChangeMaxEmployees(event?.target.value)}
-        />
-      </section>
+            <div className={styles.addPeriodButtonWrapper}>
+              <Button
+                buttonText="Add period"
+                buttonType="button"
+                stylesButton={styles.addPeriodButton}
+                onButtonClick={addPeriodHandler}
+              />
+            </div>
+          </section>
+
+          <section
+            className={clsx(styles.section_wrapper, styles.sectionTotal)}
+          >
+            <span>Total employees:</span>
+            <span>{store.data.length - 2}</span>
+          </section>
+
+          <section
+            className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
+          >
+            <span>Set max employees in office</span>
+            <input
+              type="number"
+              min={1}
+              value={store.maxValue}
+              onChange={(event) =>
+                onChangeMaxEmployees(Number(event?.target.value))
+              }
+            />
+          </section>
+        </>
+      )}
     </div>
   );
 };
