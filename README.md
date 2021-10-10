@@ -16,7 +16,11 @@ Calendar has special color labels to highlight weekends.
 ### Stack
 
 - React
+- React-table
 - Redux
 - Redux-saga
 - Typescript
+- CSS
+- clsx
 - Localstorage
+- gh-pages
