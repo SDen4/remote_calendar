@@ -25,17 +25,20 @@ const ModalContent: React.FC = () => {
 
   const [name, setName] = useState<string>('');
   const [typeOfWork, setTypeOfWork] = useState<string>('office');
+  const [validFlag, setValidFlag] = useState<boolean>(false);
 
   const onRadioClick = (type: string) => {
     setTypeOfWork(type);
   };
 
   const onChangeNameHandler = (event: any) => {
+    setValidFlag(false);
     setName(event.target.value.trim());
   };
 
   const onSubmitHahdler = () => {
     if (!name) {
+      setValidFlag(true);
       return;
     }
 
@@ -67,7 +70,14 @@ const ModalContent: React.FC = () => {
       <form onSubmit={onSubmitHahdler} className={styles.form}>
         <div className={styles.labelWrapper}>
           <label>Name: </label>
-          <input type="text" onChange={onChangeNameHandler} ref={ref} />
+          <div className={styles.inputWrapper}>
+            <input type="text" onChange={onChangeNameHandler} ref={ref} />
+            {validFlag && (
+              <span className={styles.validationText}>
+                The field can not be empty
+              </span>
+            )}
+          </div>
         </div>
 
         <div className={styles.labelWrapper}>
