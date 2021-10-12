@@ -36,7 +36,9 @@ const ModalContent: React.FC = () => {
     setName(event.target.value.trim());
   };
 
-  const onSubmitHahdler = () => {
+  const onSubmitHahdler = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
     if (!name) {
       setValidFlag(true);
       return;
