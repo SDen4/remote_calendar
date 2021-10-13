@@ -91,6 +91,11 @@ const ModalContent: React.FC = () => {
                 The field can not be empty
               </span>
             )}
+            {name.length <= 3 && !validFlag && (
+              <span className={styles.noteText}>
+                You can enter more than 1 employee separated by commas
+              </span>
+            )}
           </div>
         </div>
 
