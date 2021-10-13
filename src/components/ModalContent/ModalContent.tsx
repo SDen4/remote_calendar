@@ -44,16 +44,28 @@ const ModalContent: React.FC = () => {
       return;
     }
 
-    if (typeOfWork === 'office') {
-      const newEmployee = { name };
-      dispatch(addNewEmployee(newEmployee));
-      localStorage.setItem('calendar', JSON.stringify([newEmployee, ...data]));
-    }
+    let namesArr: string[] = [];
+    const re = /\s*,\s*/;
+    namesArr = name.split(re);
 
-    if (typeOfWork === 'remote') {
-      const newEmployee = accessorDatesGenerator(new Date(), name);
-      dispatch(addNewEmployee(newEmployee));
-      localStorage.setItem('calendar', JSON.stringify([newEmployee, ...data]));
+    for (let i = 0; i < namesArr.length; i++) {
+      if (typeOfWork === 'office') {
+        const newEmployee = { name: namesArr[i] };
+        dispatch(addNewEmployee(newEmployee));
+        localStorage.setItem(
+          'calendar',
+          JSON.stringify([newEmployee, ...data]),
+        );
+      }
+
+      if (typeOfWork === 'remote') {
+        const newEmployee = accessorDatesGenerator(new Date(), namesArr[i]);
+        dispatch(addNewEmployee(newEmployee));
+        localStorage.setItem(
+          'calendar',
+          JSON.stringify([newEmployee, ...data]),
+        );
+      }
     }
 
     dispatch(setModalFlag(false));
