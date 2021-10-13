@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import {
   fetchSaga,
   saveAllData,
+  saveFirstRangeDate,
   setColumnsQuantity,
 } from '../../store/actions';
 
@@ -19,6 +20,9 @@ const ModalDelContent: React.FC<IModalDelContent> = ({ onCloseClick }) => {
   const onCloseModalFunc = onCloseClick;
 
   const deleteHandler = () => {
+    dispatch(saveFirstRangeDate(new Date()));
+    localStorage.setItem('firstRangeDate', String(new Date()));
+
     dispatch(saveAllData(initialData));
     localStorage.setItem('calendar', JSON.stringify(initialData));
 
