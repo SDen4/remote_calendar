@@ -46,27 +46,25 @@ const ModalContent: React.FC = () => {
 
     let namesArr: string[] = [];
     const re = /\s*,\s*/;
+    const addArr = [];
     namesArr = name.split(re);
 
     for (let i = 0; i < namesArr.length; i++) {
       if (typeOfWork === 'office') {
         const newEmployee = { name: namesArr[i] };
         dispatch(addNewEmployee(newEmployee));
-        localStorage.setItem(
-          'calendar',
-          JSON.stringify([newEmployee, ...data]),
-        );
+        addArr.push(newEmployee);
       }
 
       if (typeOfWork === 'remote') {
         const newEmployee = accessorDatesGenerator(new Date(), namesArr[i]);
         dispatch(addNewEmployee(newEmployee));
-        localStorage.setItem(
-          'calendar',
-          JSON.stringify([newEmployee, ...data]),
-        );
+        addArr.push(newEmployee);
       }
     }
+
+    localStorage.setItem('calendar', JSON.stringify(addArr.concat(data)));
+    addArr.length = 0;
 
     dispatch(setModalFlag(false));
   };
