@@ -63,7 +63,10 @@ const ModalContent: React.FC = () => {
       }
     }
 
-    localStorage.setItem('calendar', JSON.stringify(addArr.concat(data)));
+    localStorage.setItem(
+      'calendar',
+      JSON.stringify(addArr.reverse().concat(data)),
+    );
     addArr.length = 0;
 
     dispatch(setModalFlag(false));
