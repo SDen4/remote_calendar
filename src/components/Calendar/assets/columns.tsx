@@ -45,7 +45,7 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
             {datesRange[i].date.slice(0, 2)}
           </div>
         ),
-        accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
+        accessor: `a_${datesRange[i].date.slice(0, 2)}${datesRange[
           i
         ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
         Cell: (cell: any) => {
@@ -85,7 +85,7 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
             {datesRange[i].date.slice(0, 2)}
           </div>
         ),
-        accessor: `accessor_${datesRange[i].date.slice(0, 2)}${datesRange[
+        accessor: `a_${datesRange[i].date.slice(0, 2)}${datesRange[
           i
         ].date.slice(3, 5)}${datesRange[i].date.slice(6, 8)}`,
         Cell: (cell: any) => {

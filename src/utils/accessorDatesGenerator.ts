@@ -10,10 +10,10 @@ const accessorDatesGenerator: any = (date: Date, name: string) => {
 
   for (let i = 0; i < datesLength; i++) {
     const date = dateFormatter(new Date(currentDate.getTime() + 86400000 * i));
-    const newDate = `accessor_${date.slice(0, 2)}${date.slice(
-      3,
-      5,
-    )}${date.slice(6, 8)}`;
+    const newDate = `a_${date.slice(0, 2)}${date.slice(3, 5)}${date.slice(
+      6,
+      8,
+    )}`;
 
     newObj[newDate] = 1;
   }
