@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/remote_calendar/static/css/main.fcd31ec1.chunk.css",
-    "main.js": "/remote_calendar/static/js/main.fb45172c.chunk.js",
-    "main.js.map": "/remote_calendar/static/js/main.fb45172c.chunk.js.map",
+    "main.css": "/remote_calendar/static/css/main.9b61a0f6.chunk.css",
+    "main.js": "/remote_calendar/static/js/main.b554a0ce.chunk.js",
+    "main.js.map": "/remote_calendar/static/js/main.b554a0ce.chunk.js.map",
     "runtime-main.js": "/remote_calendar/static/js/runtime-main.f380938e.js",
     "runtime-main.js.map": "/remote_calendar/static/js/runtime-main.f380938e.js.map",
     "static/js/2.e1c756cc.chunk.js": "/remote_calendar/static/js/2.e1c756cc.chunk.js",
     "static/js/2.e1c756cc.chunk.js.map": "/remote_calendar/static/js/2.e1c756cc.chunk.js.map",
     "index.html": "/remote_calendar/index.html",
-    "static/css/main.fcd31ec1.chunk.css.map": "/remote_calendar/static/css/main.fcd31ec1.chunk.css.map",
+    "static/css/main.9b61a0f6.chunk.css.map": "/remote_calendar/static/css/main.9b61a0f6.chunk.css.map",
     "static/js/2.e1c756cc.chunk.js.LICENSE.txt": "/remote_calendar/static/js/2.e1c756cc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f380938e.js",
     "static/js/2.e1c756cc.chunk.js",
-    "static/css/main.fcd31ec1.chunk.css",
-    "static/js/main.fb45172c.chunk.js"
+    "static/css/main.9b61a0f6.chunk.css",
+    "static/js/main.b554a0ce.chunk.js"
   ]
 }
