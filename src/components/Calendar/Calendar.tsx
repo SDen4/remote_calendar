@@ -79,7 +79,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                     className={clsx(
                       i === 0 && styles.firstCell,
                       styles.tableCell,
-                      String(cell.column.id.slice(9)) ===
+                      String(cell.column.id.slice(2)) ===
                         String(
                           `${currentDate.slice(0, 2)}${currentDate.slice(
                             3,
