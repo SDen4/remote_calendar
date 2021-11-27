@@ -159,6 +159,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                           type="button"
                           className={clsx(
                             styles.cellButton,
+                            isCtrlPressed && styles.selected,
                             cell.value === 1 && styles.cellButtonFull,
                           )}
                           onClick={() =>

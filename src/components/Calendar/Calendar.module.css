@@ -107,6 +107,14 @@
   background-color: steelblue;
 }
 
+.cellButton.selected:hover {
+  background-color: orange;
+}
+
+.cellButton.selected:hover > div {
+  color: orange;
+}
+
 .cellButton div {
   color: #fff;
   transition: 0.3s;
