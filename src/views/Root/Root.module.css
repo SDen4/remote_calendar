@@ -108,3 +108,35 @@
   height: 60px;
   border-radius: 5px;
 }
+
+.example_item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.example_item:last-child {
+  margin-bottom: 0;
+}
+
+.examle_empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid dimgray;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  margin-right: 10px;
+}
+
+.examle_full {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+.section_wrapper_notice {
+  flex-direction: column;
+}

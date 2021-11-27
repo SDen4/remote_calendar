@@ -147,6 +147,32 @@ const Root: React.FC = () => {
               }
             />
           </section>
+
+          <section
+            className={clsx(
+              styles.section_wrapper,
+              styles.section_wrapper_notice,
+            )}
+          >
+            <h3>Notice</h3>
+
+            <div className={styles.example_item}>
+              <div className={styles.examle_empty} />
+              <span>office</span>
+            </div>
+
+            <div className={styles.example_item}>
+              <div className={styles.examle_empty}>
+                <div className={styles.examle_full} />
+              </div>
+              <span>remote</span>
+            </div>
+
+            <p>
+              * you can change statuses of one employee in a few days at once
+              using Ctrl button
+            </p>
+          </section>
         </>
       )}
     </div>
