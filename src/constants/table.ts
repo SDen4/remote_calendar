@@ -8,3 +8,8 @@ export const initialData: IData[] = [
     name: 'Total remote',
   },
 ];
+
+export const defaultCell = {
+  row: '',
+  cell: '',
+};
