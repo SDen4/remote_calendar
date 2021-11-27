@@ -60,16 +60,19 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
 
     // the 2nd click
     if (isCtrlPressed && startPoint.row === rowId) {
-      const start = Number(
+      let start = Number(
         `${startPoint.cell.slice(6)}${startPoint.cell.slice(
           4,
           6,
         )}${startPoint.cell.slice(2, 4)}`,
       );
-
-      const end = Number(
-        `${cellId.slice(6)}${startPoint.cell.slice(4, 6)}${cellId.slice(2, 4)}`,
+      let end = Number(
+        `${cellId.slice(6)}${cellId.slice(4, 6)}${cellId.slice(2, 4)}`,
       );
+
+      if (end < start) {
+        [start, end] = [end - 1, start - 1];
+      }
 
       for (let i = start + 1; i <= end; i++) {
         const newCellId = `a_${String(i).slice(4)}${String(i).slice(
