@@ -36,15 +36,14 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   // catch and fix the pushing of Ctrl
   useEffect(() => {
     window.addEventListener('keydown', (event: any) => {
-      console.log(event.keyCode);
-      if (event.keyCode === 17) {
+      if (event.keyCode === 17 || event.keyCode === 91) {
         setIsCtrlPressed(true);
       }
     });
   }, []);
   useEffect(() => {
     window.addEventListener('keyup', (event: any) => {
-      if (event.keyCode === 17) {
+      if (event.keyCode === 17 || event.keyCode === 91) {
         setStartPoint(defaultCell);
         setIsCtrlPressed(false);
       }

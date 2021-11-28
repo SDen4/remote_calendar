@@ -169,8 +169,9 @@ const Root: React.FC = () => {
             </div>
 
             <p>
-              * you can change statuses of one employee in a few days at once
-              using Ctrl button
+              You can change statuses of one employee in a few days at once by
+              click holding &apos;Ctrl&apos; button for Windows and Linux or
+              &apos;Command&apos; for MacOs
             </p>
           </section>
         </>
