@@ -36,6 +36,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   // catch and fix the pushing of Ctrl
   useEffect(() => {
     window.addEventListener('keydown', (event: any) => {
+      console.log(event.keyCode);
       if (event.keyCode === 17) {
         setIsCtrlPressed(true);
       }
