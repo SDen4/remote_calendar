@@ -1,5 +1,5 @@
 /* eslint-disable react/button-has-type */
-import React from 'react';
+import React, { memo } from 'react';
 import clsx from 'clsx';
 
 import { IButton } from './types';
@@ -25,4 +25,4 @@ const Button: React.FC<IButton> = ({
   );
 };
 
-export default Button;
+export default memo(Button);

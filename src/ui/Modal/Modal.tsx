@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { IModal } from './types';
 
@@ -24,4 +24,4 @@ const Modal: React.FC<IModal> = ({ onCloseButtonClick, modalContent }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);

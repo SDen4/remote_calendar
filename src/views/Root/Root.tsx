@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
 import Modal from '../../ui/Modal';
 import Button from '../../ui/Button';
-import Calendar from '../../components/Calendar';
 import ModalContent from '../../components/ModalContent';
 import ModalDelContent from '../../components/ModalDelContent';
 import columnGenerator from '../../components/Calendar/assets/columns';
@@ -20,6 +19,8 @@ import {
 
 import styles from './Root.module.css';
 
+const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
+
 const Root: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -34,39 +35,42 @@ const Root: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  const onOpenModal = () => {
+  const onOpenModal = useCallback(() => {
     dispatch(setModalFlag(true));
-  };
+  }, [dispatch]);
 
-  const onCloseModal = () => {
+  const onCloseModal = useCallback(() => {
     dispatch(setModalFlag(false));
-  };
+  }, [dispatch]);
 
-  const onToggleDelModal = () => {
+  const onToggleDelModal = useCallback(() => {
     setDelModal(!delModal);
-  };
+  }, [delModal]);
 
-  const onChangeMaxEmployees = (value: number) => {
-    if (value < 0) {
-      return;
-    }
+  const onChangeMaxEmployees = useCallback(
+    (value: number) => {
+      if (value < 0) {
+        return;
+      }
 
-    localStorage.setItem('maxValue', String(value));
-    dispatch(saveMaxValue(value));
-    dispatch(fetchSaga(store.data, value, store.columnsQuantity));
-  };
+      localStorage.setItem('maxValue', String(value));
+      dispatch(saveMaxValue(value));
+      dispatch(fetchSaga(store.data, value, store.columnsQuantity));
+    },
+    [dispatch, store.columnsQuantity, store.data],
+  );
 
   useEffect(() => {
     // @ts-ignore
     return columnGenerator(store.firstRangeDate, store.maxValue, 90);
   }, [store.firstRangeDate, store.maxValue]);
 
-  const addPeriodHandler = () => {
+  const addPeriodHandler = useCallback(() => {
     const newColumnsQuantity = store.columnsQuantity + 90;
     localStorage.setItem('columnsQuantity', String(newColumnsQuantity));
     dispatch(setColumnsQuantity(newColumnsQuantity));
     dispatch(fetchSaga(store.data, store.maxValue, newColumnsQuantity));
-  };
+  }, [dispatch, store.columnsQuantity, store.data, store.maxValue]);
 
   return (
     <div className={styles.root_wrapper}>
@@ -115,7 +119,9 @@ const Root: React.FC = () => {
           <section
             className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
           >
-            <Calendar data={store.data} columns={store.columns} />
+            <Suspense fallback={<>Loading...</>}>
+              <LazyCalendar data={store.data} columns={store.columns} />
+            </Suspense>
 
             <div className={styles.addPeriodButtonWrapper}>
               <Button
@@ -180,4 +186,4 @@ const Root: React.FC = () => {
   );
 };
 
-export default Root;
+export default memo(Root);

@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
 import clsx from 'clsx';
@@ -194,4 +194,4 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
   );
 };
 
-export default Calendar;
+export default memo(Calendar);

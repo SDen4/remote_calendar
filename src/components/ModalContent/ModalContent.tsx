@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions';
@@ -27,56 +27,59 @@ const ModalContent: React.FC = () => {
   const [typeOfWork, setTypeOfWork] = useState<string>('office');
   const [validFlag, setValidFlag] = useState<boolean>(false);
 
-  const onRadioClick = (type: string) => {
+  const onRadioClick = useCallback((type: string) => {
     setTypeOfWork(type);
-  };
+  }, []);
 
-  const onChangeNameHandler = (event: any) => {
+  const onChangeNameHandler = useCallback((event: any) => {
     setValidFlag(false);
     setName(event.target.value.trim());
-  };
+  }, []);
 
-  const onSubmitHahdler = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+  const onSubmitHahdler = useCallback(
+    (event: React.SyntheticEvent) => {
+      event.preventDefault();
 
-    if (!name) {
-      setValidFlag(true);
-      return;
-    }
-
-    let namesArr: string[] = [];
-    const re = /\s*,\s*/;
-    const addArr = [];
-    namesArr = name.split(re);
-
-    for (let i = 0; i < namesArr.length; i++) {
-      if (typeOfWork === 'office') {
-        const newEmployee = { name: namesArr[i] };
-        dispatch(addNewEmployee(newEmployee));
-        addArr.push(newEmployee);
+      if (!name) {
+        setValidFlag(true);
+        return;
       }
 
-      if (typeOfWork === 'remote') {
-        const newEmployee = accessorDatesGenerator(new Date(), namesArr[i]);
-        dispatch(addNewEmployee(newEmployee));
-        addArr.push(newEmployee);
+      let namesArr: string[] = [];
+      const re = /\s*,\s*/;
+      const addArr = [];
+      namesArr = name.split(re);
+
+      for (let i = 0; i < namesArr.length; i++) {
+        if (typeOfWork === 'office') {
+          const newEmployee = { name: namesArr[i] };
+          dispatch(addNewEmployee(newEmployee));
+          addArr.push(newEmployee);
+        }
+
+        if (typeOfWork === 'remote') {
+          const newEmployee = accessorDatesGenerator(new Date(), namesArr[i]);
+          dispatch(addNewEmployee(newEmployee));
+          addArr.push(newEmployee);
+        }
       }
-    }
 
-    localStorage.setItem(
-      'calendar',
-      JSON.stringify(addArr.reverse().concat(data)),
-    );
-    addArr.length = 0;
+      localStorage.setItem(
+        'calendar',
+        JSON.stringify(addArr.reverse().concat(data)),
+      );
+      addArr.length = 0;
 
-    dispatch(setModalFlag(false));
-  };
+      dispatch(setModalFlag(false));
+    },
+    [data, dispatch, name, typeOfWork],
+  );
 
-  const onCloseModal = () => {
+  const onCloseModal = useCallback(() => {
     setName('');
     setTypeOfWork('office');
     dispatch(setModalFlag(false));
-  };
+  }, [dispatch]);
 
   return (
     <div className={styles.modalContent}>
@@ -146,4 +149,4 @@ const ModalContent: React.FC = () => {
   );
 };
 
-export default ModalContent;
+export default memo(ModalContent);
