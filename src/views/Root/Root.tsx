@@ -72,8 +72,20 @@ const Root: React.FC = () => {
     dispatch(fetchSaga(store.data, store.maxValue, newColumnsQuantity));
   }, [dispatch, store.columnsQuantity, store.data, store.maxValue]);
 
+  // app height
+  const [appHeight, setAppHeight] = useState<number>(0);
+  useEffect(() => setAppHeight(window.outerHeight), []);
+
+  // resize
+  window.addEventListener(
+    'resize',
+    () => setAppHeight(window.outerHeight),
+    true,
+  );
+  // app height
+
   return (
-    <div className={styles.root_wrapper}>
+    <div className={styles.root_wrapper} style={{ minHeight: appHeight }}>
       {store.modalFlag && (
         <Modal onCloseButtonClick={onCloseModal} modalContent={ModalContent} />
       )}
@@ -162,16 +174,18 @@ const Root: React.FC = () => {
           >
             <h3>Notice</h3>
 
-            <div className={styles.example_item}>
-              <div className={styles.examle_empty} />
-              <span>office</span>
-            </div>
-
-            <div className={styles.example_item}>
-              <div className={styles.examle_empty}>
-                <div className={styles.examle_full} />
+            <div className={styles.example_wrapper}>
+              <div className={styles.example_item}>
+                <div className={styles.examle_empty} />
+                <span>office</span>
               </div>
-              <span>remote</span>
+
+              <div className={styles.example_item}>
+                <div className={styles.examle_empty}>
+                  <div className={styles.examle_full} />
+                </div>
+                <span>remote</span>
+              </div>
             </div>
 
             <p>

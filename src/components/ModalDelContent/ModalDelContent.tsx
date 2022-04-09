@@ -39,7 +39,7 @@ const ModalDelContent: React.FC<IModalDelContent> = ({ onCloseClick }) => {
 
   return (
     <div className={styles.modalContent}>
-      <h2>Are sure to delete all employees?</h2>
+      <h2>Are you sure to delete all employees?</h2>
 
       <div className={styles.buttons_wrapper}>
         <Button
