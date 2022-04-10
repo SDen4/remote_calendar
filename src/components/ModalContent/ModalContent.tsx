@@ -8,6 +8,7 @@ import { IData } from '../../store/types';
 import Button from '../../ui/Button';
 
 import accessorDatesGenerator from '../../utils/accessorDatesGenerator';
+import formatInputName from '../../utils/formatInputName';
 
 import styles from './ModalContent.module.css';
 
@@ -31,10 +32,13 @@ const ModalContent: React.FC = () => {
     setTypeOfWork(type);
   }, []);
 
-  const onChangeNameHandler = useCallback((event: any) => {
-    setValidFlag(false);
-    setName(event.target.value.trim());
-  }, []);
+  const onChangeNameHandler = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValidFlag(false);
+      setName(formatInputName(event.target.value));
+    },
+    [],
+  );
 
   const onSubmitHahdler = useCallback(
     (event: React.SyntheticEvent) => {
@@ -89,7 +93,12 @@ const ModalContent: React.FC = () => {
         <div className={styles.labelWrapper}>
           <label>Name: </label>
           <div className={styles.inputWrapper}>
-            <input type="text" onChange={onChangeNameHandler} ref={ref} />
+            <input
+              type="text"
+              onChange={onChangeNameHandler}
+              ref={ref}
+              value={name}
+            />
             {validFlag && (
               <span className={styles.validationText}>
                 The field can not be empty
