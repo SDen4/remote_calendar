@@ -2,10 +2,7 @@ import React, { memo, Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import Modal from '../../ui/Modal';
 import Button from '../../ui/Button';
-import ModalContent from '../../components/ModalContent';
-import ModalDelContent from '../../components/ModalDelContent';
 import columnGenerator from '../../components/Calendar/assets/columns';
 
 import { AppStateType } from '../../store/RootReducer';
@@ -20,6 +17,13 @@ import {
 import styles from './Root.module.css';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
+const LazyModalContent = React.lazy(
+  () => import('../../components/ModalContent'),
+);
+const LazyModalDelContent = React.lazy(
+  () => import('../../components/ModalDelContent'),
+);
+const LazyModal = React.lazy(() => import('../../ui/Modal'));
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
@@ -74,7 +78,7 @@ const Root: React.FC = () => {
 
   // app height
   const [appHeight, setAppHeight] = useState<number>(0);
-  useEffect(() => setAppHeight(window.outerHeight), []);
+  useEffect(() => setAppHeight(window.innerHeight), []);
 
   // resize
   window.addEventListener(
@@ -87,14 +91,21 @@ const Root: React.FC = () => {
   return (
     <div className={styles.root_wrapper} style={{ minHeight: appHeight }}>
       {store.modalFlag && (
-        <Modal onCloseButtonClick={onCloseModal} modalContent={ModalContent} />
+        <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
+          <LazyModal
+            onCloseButtonClick={onCloseModal}
+            modalContent={LazyModalContent}
+          />
+        </Suspense>
       )}
 
       {delModal && (
-        <Modal
-          onCloseButtonClick={onToggleDelModal}
-          modalContent={ModalDelContent}
-        />
+        <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
+          <LazyModal
+            onCloseButtonClick={onToggleDelModal}
+            modalContent={LazyModalDelContent}
+          />
+        </Suspense>
       )}
 
       <header>
@@ -131,7 +142,9 @@ const Root: React.FC = () => {
           <section
             className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
           >
-            <Suspense fallback={<>Loading...</>}>
+            <Suspense
+              fallback={<div className={styles.loading}>Loading...</div>}
+            >
               <LazyCalendar data={store.data} columns={store.columns} />
             </Suspense>
 

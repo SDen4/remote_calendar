@@ -148,6 +148,13 @@
   flex-direction: column;
 }
 
+.loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 480px) {
   .example_item {
     font-size: 13px;
