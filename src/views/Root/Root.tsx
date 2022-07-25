@@ -172,8 +172,9 @@ const Root: React.FC = () => {
           <section
             className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
           >
-            <span>Set max employees in office</span>
+            <label htmlFor="label">Set max employees in office</label>
             <input
+              id="label"
               type="number"
               min={1}
               value={store.maxValue}
