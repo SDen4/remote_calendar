@@ -2,20 +2,20 @@ import React, { memo, Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import Button from '../../ui/Button';
-import columnGenerator from '../../components/Calendar/assets/columns';
-
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
 import {
   fetchSaga,
-  saveMaxValue,
   setColumnsQuantity,
   setModalFlag,
 } from '../../store/actions';
 
-import styles from './Root.module.css';
+import Button from '../../ui/Button';
 import Notice from '../../components/Notice';
+import MaxEmployee from '../../components/MaxEmployee';
+import columnGenerator from '../../components/Calendar/assets/columns';
+
+import styles from './Root.module.css';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(
@@ -33,12 +33,12 @@ const Root: React.FC = () => {
     (store) => store.reducer,
   );
 
-  const [delModal, setDelModal] = useState<boolean>(false);
-
   useEffect(() => {
     dispatch(fetchSaga(store.data, store.maxValue, store.columnsQuantity));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  const [delModal, setDelModal] = useState<boolean>(false);
 
   const onOpenModal = useCallback(() => {
     dispatch(setModalFlag(true));
@@ -51,19 +51,6 @@ const Root: React.FC = () => {
   const onToggleDelModal = useCallback(() => {
     setDelModal(!delModal);
   }, [delModal]);
-
-  const onChangeMaxEmployees = useCallback(
-    (value: number) => {
-      if (value < 0) {
-        return;
-      }
-
-      localStorage.setItem('maxValue', String(value));
-      dispatch(saveMaxValue(value));
-      dispatch(fetchSaga(store.data, value, store.columnsQuantity));
-    },
-    [dispatch, store.columnsQuantity, store.data],
-  );
 
   useEffect(() => {
     // @ts-ignore
@@ -173,16 +160,7 @@ const Root: React.FC = () => {
           <section
             className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
           >
-            <label htmlFor="label">Set max employees in office</label>
-            <input
-              id="label"
-              type="number"
-              min={1}
-              value={store.maxValue}
-              onChange={(event) =>
-                onChangeMaxEmployees(Number(event?.target.value))
-              }
-            />
+            <MaxEmployee />
           </section>
 
           <section
