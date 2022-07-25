@@ -157,6 +157,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                       row.index !== data.length - 2 ? (
                         <button
                           type="button"
+                          aria-label="Cell Button"
                           className={clsx(
                             styles.cellButton,
                             isCtrlPressed && styles.selected,
@@ -176,6 +177,7 @@ const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
                         cell.value !== 'Total remote' && (
                           <button
                             type="button"
+                            aria-label="Delete Row"
                             className={styles.buttonDelRow}
                             onClick={() => deleteRowHandler(cell.value)}
                           >

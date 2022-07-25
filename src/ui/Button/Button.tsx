@@ -16,6 +16,7 @@ const Button: React.FC<IButton> = ({
   return (
     <button
       type={buttonType}
+      aria-label={buttonText}
       onClick={onButtonClick}
       className={clsx(styles.button, stylesButton)}
       disabled={disabled}

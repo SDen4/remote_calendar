@@ -14,7 +14,12 @@ const Modal: React.FC<IModal> = ({ onCloseButtonClick, modalContent }) => {
   return (
     <div className={styles.modalWrapper}>
       <div className={styles.modal}>
-        <button type="button" onClick={onCloseClick} className={styles.button}>
+        <button
+          type="button"
+          onClick={onCloseClick}
+          className={styles.button}
+          aria-label="Close Button"
+        >
           <span />
         </button>
 
