@@ -77,6 +77,7 @@ const Root: React.FC = () => {
   }, [dispatch, store.columnsQuantity, store.data, store.maxValue]);
 
   // app height
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [appHeight, setAppHeight] = useState<number>(0);
   useEffect(() => setAppHeight(window.innerHeight), []);
 
@@ -89,7 +90,10 @@ const Root: React.FC = () => {
   // app height
 
   return (
-    <div className={styles.root_wrapper} style={{ minHeight: appHeight }}>
+    <div
+      className={styles.root_wrapper}
+      style={window.innerWidth < 480 ? { minHeight: appHeight } : {}}
+    >
       {store.modalFlag && (
         <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
           <LazyModal
