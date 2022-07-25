@@ -15,6 +15,7 @@ import {
 } from '../../store/actions';
 
 import styles from './Root.module.css';
+import Notice from '../../components/Notice';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(
@@ -190,27 +191,7 @@ const Root: React.FC = () => {
               styles.section_wrapper_notice,
             )}
           >
-            <h3>Notice</h3>
-
-            <div className={styles.example_wrapper}>
-              <div className={styles.example_item}>
-                <div className={styles.examle_empty} />
-                <span>office</span>
-              </div>
-
-              <div className={styles.example_item}>
-                <div className={styles.examle_empty}>
-                  <div className={styles.examle_full} />
-                </div>
-                <span>remote</span>
-              </div>
-            </div>
-
-            <p>
-              You can change statuses of one employee in a few days at once by
-              click holding &apos;Ctrl&apos; button for Windows and Linux or
-              &apos;Command&apos; for MacOs
-            </p>
+            <Notice />
           </section>
         </>
       )}

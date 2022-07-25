@@ -1,0 +1,40 @@
+.example_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.example_item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.example_item:last-child {
+  margin-right: 0;
+}
+
+.examle_empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid dimgray;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  margin-right: 10px;
+}
+
+.examle_full {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+
+@media (max-width: 480px) {
+  .example_item {
+    font-size: 13px;
+  }
+}
