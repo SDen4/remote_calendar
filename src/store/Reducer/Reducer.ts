@@ -6,6 +6,7 @@ import {
   ADD_NEW_EMPLOYEE,
   SAVE_MAX_VALUE,
   ADD_COLUMNS_QUANTITY,
+  SET_LOADER_FLAG,
 } from '../constants';
 
 import { initialData } from '../../constants/table';
@@ -20,6 +21,7 @@ const initialState: InitialStateType = {
   modalFlag: false,
   maxValue: 1,
   columnsQuantity: 90,
+  loaderFlag: true,
 };
 
 export const Reducer = (
@@ -28,46 +30,28 @@ export const Reducer = (
 ): typeof state => {
   switch (action.type) {
     case SAVE_ALL_DATA:
-      return {
-        ...state,
-        data: action.data,
-      };
+      return { ...state, data: action.data };
 
     case SAVE_ALL_COLUMNS:
-      return {
-        ...state,
-        columns: action.columns,
-      };
+      return { ...state, columns: action.columns };
 
     case SAVE_FIRST_RANGE_DATE:
-      return {
-        ...state,
-        firstRangeDate: action.firstRangeDate,
-      };
+      return { ...state, firstRangeDate: action.firstRangeDate };
 
     case SET_MODAL_FLAG:
-      return {
-        ...state,
-        modalFlag: action.modalFlag,
-      };
+      return { ...state, modalFlag: action.modalFlag };
 
     case ADD_NEW_EMPLOYEE:
-      return {
-        ...state,
-        data: [action.newEmployee, ...state.data],
-      };
+      return { ...state, data: [action.newEmployee, ...state.data] };
 
     case SAVE_MAX_VALUE:
-      return {
-        ...state,
-        maxValue: action.maxValue,
-      };
+      return { ...state, maxValue: action.maxValue };
 
     case ADD_COLUMNS_QUANTITY:
-      return {
-        ...state,
-        columnsQuantity: action.columnsQuantity,
-      };
+      return { ...state, columnsQuantity: action.columnsQuantity };
+
+    case SET_LOADER_FLAG:
+      return { ...state, loaderFlag: action.loaderFlag };
 
     default:
       return state;

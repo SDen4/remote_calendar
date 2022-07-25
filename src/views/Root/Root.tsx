@@ -16,6 +16,7 @@ import MaxEmployee from '../../components/MaxEmployee';
 import columnGenerator from '../../components/Calendar/assets/columns';
 
 import styles from './Root.module.css';
+import Loader from '../../components/Loader';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(
@@ -82,95 +83,107 @@ const Root: React.FC = () => {
       className={styles.root_wrapper}
       style={window.innerWidth < 480 ? { minHeight: appHeight } : {}}
     >
-      {store.modalFlag && (
-        <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
-          <LazyModal
-            onCloseButtonClick={onCloseModal}
-            modalContent={LazyModalContent}
-          />
-        </Suspense>
-      )}
-
-      {delModal && (
-        <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
-          <LazyModal
-            onCloseButtonClick={onToggleDelModal}
-            modalContent={LazyModalDelContent}
-          />
-        </Suspense>
-      )}
-
       <header>
         <h1>Remote Calendar</h1>
       </header>
 
-      <section className={clsx(styles.section_wrapper, styles.buttons_wrapper)}>
-        <Button
-          buttonText="Add employee"
-          buttonType="button"
-          onButtonClick={onOpenModal}
-        />
-
-        {store.data.length > 2 && (
-          <Button
-            buttonText={
-              store.data.length === 3
-                ? 'Delete employee'
-                : 'Delete all employees'
-            }
-            buttonType="button"
-            onButtonClick={onToggleDelModal}
-            stylesButton={clsx(
-              styles.deleteButton,
-              store.data.length <= 2 && styles.disabledButton,
-            )}
-            disabled={store.data.length <= 2}
-          />
-        )}
-      </section>
-
-      {store.data.length > 2 && (
+      {store.loaderFlag ? (
+        <Loader />
+      ) : (
         <>
-          <section
-            className={clsx(styles.section_wrapper, styles.calendar_wrapper)}
-          >
-            <Suspense
-              fallback={<div className={styles.loading}>Loading...</div>}
-            >
-              <LazyCalendar data={store.data} columns={store.columns} />
-            </Suspense>
-
-            <div className={styles.addPeriodButtonWrapper}>
-              <Button
-                buttonText="Add period"
-                buttonType="button"
-                stylesButton={styles.addPeriodButton}
-                onButtonClick={addPeriodHandler}
+          {store.modalFlag && (
+            <Suspense fallback={<Loader />}>
+              <LazyModal
+                onCloseButtonClick={onCloseModal}
+                modalContent={LazyModalContent}
               />
-            </div>
-          </section>
+            </Suspense>
+          )}
+
+          {delModal && (
+            <Suspense fallback={<Loader />}>
+              <LazyModal
+                onCloseButtonClick={onToggleDelModal}
+                modalContent={LazyModalDelContent}
+              />
+            </Suspense>
+          )}
 
           <section
-            className={clsx(styles.section_wrapper, styles.sectionTotal)}
+            className={clsx(styles.section_wrapper, styles.buttons_wrapper)}
           >
-            <span>Total employees:</span>
-            <span>{store.data.length - 2}</span>
-          </section>
+            <Button
+              buttonText="Add employee"
+              buttonType="button"
+              onButtonClick={onOpenModal}
+            />
 
-          <section
-            className={clsx(styles.section_wrapper, styles.sectionMaxEmployees)}
-          >
-            <MaxEmployee />
-          </section>
-
-          <section
-            className={clsx(
-              styles.section_wrapper,
-              styles.section_wrapper_notice,
+            {store.data.length > 2 && (
+              <Button
+                buttonText={
+                  store.data.length === 3
+                    ? 'Delete employee'
+                    : 'Delete all employees'
+                }
+                buttonType="button"
+                onButtonClick={onToggleDelModal}
+                stylesButton={clsx(
+                  styles.deleteButton,
+                  store.data.length <= 2 && styles.disabledButton,
+                )}
+                disabled={store.data.length <= 2}
+              />
             )}
-          >
-            <Notice />
           </section>
+
+          {store.data.length > 2 && (
+            <>
+              <section
+                className={clsx(
+                  styles.section_wrapper,
+                  styles.calendar_wrapper,
+                )}
+              >
+                <Suspense fallback={<Loader />}>
+                  <LazyCalendar data={store.data} columns={store.columns} />
+                </Suspense>
+
+                <div className={styles.addPeriodButtonWrapper}>
+                  <Button
+                    buttonText="Add period"
+                    buttonType="button"
+                    stylesButton={styles.addPeriodButton}
+                    onButtonClick={addPeriodHandler}
+                  />
+                </div>
+              </section>
+
+              <section
+                className={clsx(styles.section_wrapper, styles.sectionTotal)}
+              >
+                <span>Total employees:</span>
+                <span>{store.data.length - 2}</span>
+              </section>
+
+              <section
+                className={clsx(
+                  styles.section_wrapper,
+                  styles.sectionMaxEmployees,
+                )}
+              >
+                <MaxEmployee />
+              </section>
+
+              <section
+                className={clsx(
+                  styles.section_wrapper,
+                  styles.section_wrapper_notice,
+                )}
+              >
+                <Notice />
+              </section>
+            </>
+          )}
         </>
       )}
     </div>

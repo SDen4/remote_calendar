@@ -7,6 +7,7 @@ import {
   ADD_NEW_EMPLOYEE,
   SAVE_MAX_VALUE,
   ADD_COLUMNS_QUANTITY,
+  SET_LOADER_FLAG,
 } from './constants';
 import { IData } from './types';
 
@@ -72,6 +73,13 @@ export const setColumnsQuantity = (columnsQuantity: number) => {
   } as const;
 };
 
+export const setLoaderFlag = (loaderFlag: boolean) => {
+  return {
+    type: SET_LOADER_FLAG,
+    loaderFlag,
+  } as const;
+};
+
 type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
@@ -80,6 +88,7 @@ type setModalFlagType = ReturnType<typeof setModalFlag>;
 type addNewEmployeeType = ReturnType<typeof addNewEmployee>;
 type saveMaxValueType = ReturnType<typeof saveMaxValue>;
 type setColumnsQuantityType = ReturnType<typeof setColumnsQuantity>;
+type setLoaderFlagType = ReturnType<typeof setLoaderFlag>;
 
 export type ActionsType =
   | FetchSagaType
@@ -89,4 +98,5 @@ export type ActionsType =
   | setModalFlagType
   | addNewEmployeeType
   | saveMaxValueType
-  | setColumnsQuantityType;
+  | setColumnsQuantityType
+  | setLoaderFlagType;

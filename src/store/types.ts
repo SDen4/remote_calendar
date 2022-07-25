@@ -12,6 +12,7 @@ export interface InitialStateType {
   modalFlag: boolean;
   maxValue: number;
   columnsQuantity: number;
+  loaderFlag: boolean;
 }
 
 export interface FetchSagaActionType {

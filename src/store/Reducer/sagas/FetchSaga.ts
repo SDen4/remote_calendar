@@ -8,6 +8,7 @@ import {
   saveFirstRangeDate,
   saveMaxValue,
   setColumnsQuantity,
+  setLoaderFlag,
 } from '../../actions';
 
 import { FETCH_SAGA } from '../../constants';
@@ -70,6 +71,8 @@ function* sagaWorker(action: FetchSagaActionType) {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
+  } finally {
+    yield put(setLoaderFlag(false));
   }
 }
 
