@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import React, { memo, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTable } from 'react-table';
 import clsx from 'clsx';
 
@@ -11,12 +11,24 @@ import { dateFormatter } from '../../utils/dateFormatter';
 import { defaultCell } from '../../constants/table';
 
 import { IData } from '../../store/types';
-import { ICalendar, IStartPoint } from './types';
+import { AppStateType } from '../../store/RootReducer';
 
 import styles from './Calendar.module.css';
 
-const Calendar: React.FC<ICalendar> = ({ data, columns }) => {
+export interface IStartPoint {
+  row: string;
+  cell: string;
+}
+
+const Calendar: React.FC = () => {
   const dispatch = useDispatch();
+
+  const data = useSelector<AppStateType, IData[]>(
+    (store) => store.reducer.data,
+  );
+  const columns = useSelector<AppStateType, any[]>(
+    (store) => store.reducer.columns,
+  );
 
   const currentDate = dateFormatter(new Date());
 

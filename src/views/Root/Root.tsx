@@ -145,7 +145,7 @@ const Root: React.FC = () => {
                 )}
               >
                 <Suspense fallback={<Loader />}>
-                  <LazyCalendar data={store.data} columns={store.columns} />
+                  <LazyCalendar />
                 </Suspense>
 
                 <div className={styles.addPeriodButtonWrapper}>
