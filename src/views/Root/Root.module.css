@@ -1,4 +1,4 @@
-.root_wrapper {
+.root {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -13,34 +13,34 @@
   padding: 20px;
 }
 
-.section_wrapper {
+.section {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.section_wrapper:last-child {
+.section:last-child {
   margin-bottom: 0;
 }
 
-.calendar_wrapper {
+.calendar {
   overflow-x: scroll;
 }
 
-.calendar_wrapper::-webkit-scrollbar {
+.calendar::-webkit-scrollbar {
   height: 5px;
   background-color: transparent;
   border-radius: 5px;
 }
-.calendar_wrapper::-webkit-scrollbar-thumb {
+.calendar::-webkit-scrollbar-thumb {
   background-color: steelblue;
   border-radius: 5px;
 }
-.calendar_wrapper::-webkit-scrollbar-thumb:hover {
+.calendar::-webkit-scrollbar-thumb:hover {
   background-color: #253861;
 }
 
-.buttons_wrapper {
+.buttons {
   justify-content: space-between;
 }
 
@@ -109,7 +109,7 @@
   border-radius: 5px;
 }
 
-.section_wrapper_notice {
+.sectionNotice {
   flex-direction: column;
 }
 
@@ -127,15 +127,15 @@
 }
 
 @media (max-width: 480px) {
-  .section_wrapper {
+  .section {
     margin-bottom: 10px;
   }
 
-  .section_wrapper_notice p {
+  .sectionNotice p {
     font-size: 13px;
   }
 
-  .section_wrapper_notice h3 {
+  .sectionNotice h3 {
     margin: 0 0 10px;
   }
 }

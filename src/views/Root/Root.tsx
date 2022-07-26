@@ -81,7 +81,7 @@ const Root: React.FC = () => {
 
   return (
     <div
-      className={styles.root_wrapper}
+      className={styles.root}
       style={window.innerWidth < 480 ? { minHeight: appHeight } : {}}
     >
       <header>
@@ -110,9 +110,7 @@ const Root: React.FC = () => {
             </Suspense>
           )}
 
-          <section
-            className={clsx(styles.section_wrapper, styles.buttons_wrapper)}
-          >
+          <section className={clsx(styles.section, styles.buttons)}>
             <Button
               buttonText="Add employee"
               buttonType="button"
@@ -139,12 +137,7 @@ const Root: React.FC = () => {
 
           {store.data.length > 2 && (
             <>
-              <section
-                className={clsx(
-                  styles.section_wrapper,
-                  styles.calendar_wrapper,
-                )}
-              >
+              <section className={clsx(styles.section, styles.calendar)}>
                 <Suspense fallback={<Loader />}>
                   <LazyCalendar />
                 </Suspense>
@@ -159,28 +152,18 @@ const Root: React.FC = () => {
                 </div>
               </section>
 
-              <section
-                className={clsx(styles.section_wrapper, styles.sectionTotal)}
-              >
+              <section className={clsx(styles.section, styles.sectionTotal)}>
                 <span>Total employees:</span>
                 <span>{store.data.length - 2}</span>
               </section>
 
               <section
-                className={clsx(
-                  styles.section_wrapper,
-                  styles.sectionMaxEmployees,
-                )}
+                className={clsx(styles.section, styles.sectionMaxEmployees)}
               >
                 <MaxEmployee />
               </section>
 
-              <section
-                className={clsx(
-                  styles.section_wrapper,
-                  styles.section_wrapper_notice,
-                )}
-              >
+              <section className={clsx(styles.section, styles.sectionNotice)}>
                 <Notice />
               </section>
             </>
