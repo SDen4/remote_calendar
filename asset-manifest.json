@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/remote_calendar/static/css/main.c01aeb41.chunk.css",
-    "main.js": "/remote_calendar/static/js/main.423dab65.chunk.js",
-    "main.js.map": "/remote_calendar/static/js/main.423dab65.chunk.js.map",
+    "main.js": "/remote_calendar/static/js/main.6dd759e2.chunk.js",
+    "main.js.map": "/remote_calendar/static/js/main.6dd759e2.chunk.js.map",
     "runtime-main.js": "/remote_calendar/static/js/runtime-main.01cf7a74.js",
     "runtime-main.js.map": "/remote_calendar/static/js/runtime-main.01cf7a74.js.map",
     "static/js/2.74751cff.chunk.js": "/remote_calendar/static/js/2.74751cff.chunk.js",
@@ -33,6 +33,6 @@
     "static/js/runtime-main.01cf7a74.js",
     "static/js/2.74751cff.chunk.js",
     "static/css/main.c01aeb41.chunk.css",
-    "static/js/main.423dab65.chunk.js"
+    "static/js/main.6dd759e2.chunk.js"
   ]
 }
