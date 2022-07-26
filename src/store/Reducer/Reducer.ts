@@ -1,13 +1,4 @@
-import {
-  SAVE_ALL_DATA,
-  SAVE_ALL_COLUMNS,
-  SAVE_FIRST_RANGE_DATE,
-  SET_MODAL_FLAG,
-  ADD_NEW_EMPLOYEE,
-  SAVE_MAX_VALUE,
-  ADD_COLUMNS_QUANTITY,
-  SET_LOADER_FLAG,
-} from '../constants';
+import * as CONST from '../constants';
 
 import { initialData } from '../../constants/table';
 
@@ -29,28 +20,28 @@ export const Reducer = (
   action: ActionsType,
 ): typeof state => {
   switch (action.type) {
-    case SAVE_ALL_DATA:
+    case CONST.SAVE_ALL_DATA:
       return { ...state, data: action.data };
 
-    case SAVE_ALL_COLUMNS:
+    case CONST.SAVE_ALL_COLUMNS:
       return { ...state, columns: action.columns };
 
-    case SAVE_FIRST_RANGE_DATE:
+    case CONST.SAVE_FIRST_RANGE_DATE:
       return { ...state, firstRangeDate: action.firstRangeDate };
 
-    case SET_MODAL_FLAG:
+    case CONST.SET_MODAL_FLAG:
       return { ...state, modalFlag: action.modalFlag };
 
-    case ADD_NEW_EMPLOYEE:
+    case CONST.ADD_NEW_EMPLOYEE:
       return { ...state, data: [action.newEmployee, ...state.data] };
 
-    case SAVE_MAX_VALUE:
+    case CONST.SAVE_MAX_VALUE:
       return { ...state, maxValue: action.maxValue };
 
-    case ADD_COLUMNS_QUANTITY:
+    case CONST.ADD_COLUMNS_QUANTITY:
       return { ...state, columnsQuantity: action.columnsQuantity };
 
-    case SET_LOADER_FLAG:
+    case CONST.SET_LOADER_FLAG:
       return { ...state, loaderFlag: action.loaderFlag };
 
     default:

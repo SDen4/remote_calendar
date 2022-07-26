@@ -1,14 +1,5 @@
-import {
-  FETCH_SAGA,
-  SAVE_ALL_DATA,
-  SAVE_ALL_COLUMNS,
-  SAVE_FIRST_RANGE_DATE,
-  SET_MODAL_FLAG,
-  ADD_NEW_EMPLOYEE,
-  SAVE_MAX_VALUE,
-  ADD_COLUMNS_QUANTITY,
-  SET_LOADER_FLAG,
-} from './constants';
+import * as CONST from './constants';
+
 import { IData } from './types';
 
 export const fetchSaga = (
@@ -17,7 +8,7 @@ export const fetchSaga = (
   columnsQuantity: number,
 ) => {
   return {
-    type: FETCH_SAGA,
+    type: CONST.FETCH_SAGA,
     data,
     maxValue,
     columnsQuantity,
@@ -26,56 +17,56 @@ export const fetchSaga = (
 
 export const saveAllData = (data: IData[]) => {
   return {
-    type: SAVE_ALL_DATA,
+    type: CONST.SAVE_ALL_DATA,
     data,
   } as const;
 };
 
 export const saveAllColumns = (columns: any[]) => {
   return {
-    type: SAVE_ALL_COLUMNS,
+    type: CONST.SAVE_ALL_COLUMNS,
     columns,
   } as const;
 };
 
 export const saveFirstRangeDate = (firstRangeDate: Date) => {
   return {
-    type: SAVE_FIRST_RANGE_DATE,
+    type: CONST.SAVE_FIRST_RANGE_DATE,
     firstRangeDate,
   } as const;
 };
 
 export const setModalFlag = (modalFlag: boolean) => {
   return {
-    type: SET_MODAL_FLAG,
+    type: CONST.SET_MODAL_FLAG,
     modalFlag,
   } as const;
 };
 
 export const addNewEmployee = (newEmployee: IData) => {
   return {
-    type: ADD_NEW_EMPLOYEE,
+    type: CONST.ADD_NEW_EMPLOYEE,
     newEmployee,
   } as const;
 };
 
 export const saveMaxValue = (maxValue: number) => {
   return {
-    type: SAVE_MAX_VALUE,
+    type: CONST.SAVE_MAX_VALUE,
     maxValue,
   } as const;
 };
 
 export const setColumnsQuantity = (columnsQuantity: number) => {
   return {
-    type: ADD_COLUMNS_QUANTITY,
+    type: CONST.ADD_COLUMNS_QUANTITY,
     columnsQuantity,
   } as const;
 };
 
 export const setLoaderFlag = (loaderFlag: boolean) => {
   return {
-    type: SET_LOADER_FLAG,
+    type: CONST.SET_LOADER_FLAG,
     loaderFlag,
   } as const;
 };
