@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { AppStateType } from '../../store/RootReducer';
 import { InitialStateType } from '../../store/types';
+
 import {
   fetchSaga,
   setColumnsQuantity,
@@ -11,12 +12,12 @@ import {
 } from '../../store/actions';
 
 import Button from '../../ui/Button';
+import Loader from '../../components/Loader';
 import Notice from '../../components/Notice';
 import MaxEmployee from '../../components/MaxEmployee';
 import columnGenerator from '../../components/Calendar/assets/columns';
 
 import styles from './Root.module.css';
-import Loader from '../../components/Loader';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(

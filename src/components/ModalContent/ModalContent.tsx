@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions';
+
 import { AppStateType } from '../../store/RootReducer';
 import { IData } from '../../store/types';
 
