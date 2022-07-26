@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -60,4 +60,4 @@ const ModalDelContent: React.FC<IModalDelContent> = ({ onCloseClick }) => {
   );
 };
 
-export default ModalDelContent;
+export default memo(ModalDelContent);

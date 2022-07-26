@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styles from './styles.module.css';
 
@@ -30,4 +30,4 @@ const Notice: React.FC = () => {
   );
 };
 
-export default Notice;
+export default memo(Notice);
