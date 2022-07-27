@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions';
@@ -159,4 +159,4 @@ const ModalContent: React.FC = () => {
   );
 };
 
-export default memo(ModalContent);
+export default ModalContent;

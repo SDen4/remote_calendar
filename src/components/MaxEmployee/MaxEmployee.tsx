@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchSaga, saveMaxValue } from '../../store/actions';
@@ -46,4 +46,4 @@ const MaxEmployee: React.FC = () => {
   );
 };
 
-export default memo(MaxEmployee);
+export default MaxEmployee;
