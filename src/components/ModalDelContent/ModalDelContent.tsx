@@ -12,11 +12,13 @@ import Button from '../../ui/Button';
 
 import { initialData } from '../../constants/table';
 
-import { IModalDelContent } from './types';
-
 import styles from './ModalDelContent.module.css';
 
-const ModalDelContent: React.FC<IModalDelContent> = ({ onCloseClick }) => {
+interface IProps {
+  onCloseClick?: any;
+}
+
+const ModalDelContent: React.FC<IProps> = ({ onCloseClick }) => {
   const dispatch = useDispatch();
   const onCloseModalFunc = onCloseClick;
 

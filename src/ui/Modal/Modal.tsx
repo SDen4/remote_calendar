@@ -1,10 +1,14 @@
 import React, { memo } from 'react';
 
-import { IModal } from './types';
-
 import styles from './Modal.module.css';
 
-const Modal: React.FC<IModal> = ({ onCloseButtonClick, modalContent }) => {
+interface IProps {
+  onCloseButtonClick: () => void;
+  modalContent: any;
+  onCloseClick?: () => void;
+}
+
+const Modal: React.FC<IProps> = ({ onCloseButtonClick, modalContent }) => {
   const InnerComponent = modalContent;
 
   const onCloseClick = () => {

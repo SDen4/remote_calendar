@@ -2,11 +2,17 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
 
-import { IButton } from './types';
-
 import styles from './Button.module.css';
 
-const Button: React.FC<IButton> = ({
+interface IProps {
+  buttonText: string;
+  buttonType: 'button' | 'submit' | 'reset';
+  onButtonClick?: (event: React.SyntheticEvent) => void;
+  stylesButton?: string;
+  disabled?: boolean;
+}
+
+const Button: React.FC<IProps> = ({
   buttonText,
   buttonType,
   onButtonClick,
