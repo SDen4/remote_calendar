@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchSaga, saveMaxValue } from '../../store/actions';
+import { fetchSaga, saveMaxValue } from '../../store/actions/actions';
 
 import { AppStateType } from '../../store/RootReducer';
 import { IData } from '../../store/types';

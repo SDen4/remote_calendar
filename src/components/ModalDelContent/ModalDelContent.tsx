@@ -6,13 +6,13 @@ import {
   saveAllData,
   saveFirstRangeDate,
   setColumnsQuantity,
-} from '../../store/actions';
+} from '../../store/actions/actions';
 
 import Button from '../../ui/Button';
 
 import { initialData } from '../../constants/table';
 
-import styles from './ModalDelContent.module.css';
+import styles from './styles.module.css';
 
 interface IProps {
   onCloseClick?: any;

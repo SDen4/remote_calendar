@@ -2,7 +2,7 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
 
-import styles from './Button.module.css';
+import styles from './styles.module.css';
 
 interface IProps {
   buttonText: string;

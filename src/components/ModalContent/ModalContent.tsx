@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addNewEmployee, setModalFlag } from '../../store/actions';
+import { addNewEmployee, setModalFlag } from '../../store/actions/actions';
 
 import { AppStateType } from '../../store/RootReducer';
 import { IData } from '../../store/types';
@@ -11,7 +11,7 @@ import Button from '../../ui/Button';
 import accessorDatesGenerator from '../../utils/accessorDatesGenerator';
 import formatInputName from '../../utils/formatInputName';
 
-import styles from './ModalContent.module.css';
+import styles from './styles.module.css';
 
 const ModalContent: React.FC = () => {
   const dispatch = useDispatch();

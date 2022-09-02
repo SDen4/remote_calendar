@@ -1,6 +1,6 @@
-import * as CONST from './constants';
+import * as CONST from '../constants';
 
-import { IData } from './types';
+import { IData } from '../types';
 
 export const fetchSaga = (
   data: IData[],

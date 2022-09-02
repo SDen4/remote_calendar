@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTable } from 'react-table';
 import clsx from 'clsx';
 
-import { saveAllData } from '../../store/actions';
+import { saveAllData } from '../../store/actions/actions';
 
 import { dateFormatter } from '../../utils/dateFormatter';
 
@@ -13,7 +13,7 @@ import { defaultCell } from '../../constants/table';
 import { IData } from '../../store/types';
 import { AppStateType } from '../../store/RootReducer';
 
-import styles from './Calendar.module.css';
+import styles from './styles.module.css';
 
 export interface IStartPoint {
   row: string;

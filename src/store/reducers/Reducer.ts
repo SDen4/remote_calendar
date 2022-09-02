@@ -2,7 +2,7 @@ import * as CONST from '../constants';
 
 import { initialData } from '../../constants/table';
 
-import { ActionsType } from '../actions';
+import { ActionsType } from '../actions/actions';
 import { InitialStateType } from '../types';
 
 const initialState: InitialStateType = {

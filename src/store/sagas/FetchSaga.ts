@@ -1,6 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 
-import columnGenerator from '../../../components/Calendar/assets/columns';
+import columnGenerator from '../../components/Calendar/assets/columns';
 
 import {
   saveAllColumns,
@@ -9,11 +9,11 @@ import {
   saveMaxValue,
   setColumnsQuantity,
   setLoaderFlag,
-} from '../../actions';
+} from '../actions/actions';
 
-import { FETCH_SAGA } from '../../constants';
+import { FETCH_SAGA } from '../constants';
 
-import { FetchSagaActionType, IData } from '../../types';
+import { FetchSagaActionType, IData } from '../types';
 
 function* sagaWorker(action: FetchSagaActionType) {
   try {
