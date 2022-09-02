@@ -2,22 +2,18 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchSaga, saveMaxValue } from '../../store/actions/actions';
-
-import { AppStateType } from '../../store/RootReducer';
-import { IData } from '../../store/types';
+import {
+  columnsQuantitySelect,
+  dataSelect,
+  maxValueSelect,
+} from '../../store/selectors';
 
 const MaxEmployee: React.FC = () => {
   const dispatch = useDispatch();
 
-  const data = useSelector<AppStateType, IData[]>(
-    (store) => store.reducer.data,
-  );
-  const columnsQuantity = useSelector<AppStateType, number>(
-    (store) => store.reducer.columnsQuantity,
-  );
-  const maxValue = useSelector<AppStateType, number>(
-    (store) => store.reducer.maxValue,
-  );
+  const data = useSelector(dataSelect);
+  const columnsQuantity = useSelector(columnsQuantitySelect);
+  const maxValue = useSelector(maxValueSelect);
 
   const onChangeMaxEmployees = useCallback(
     (value: number) => {

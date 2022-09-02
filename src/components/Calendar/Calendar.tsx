@@ -11,7 +11,7 @@ import { dateFormatter } from '../../utils/dateFormatter';
 import { defaultCell } from '../../constants/table';
 
 import { IData } from '../../store/types';
-import { AppStateType } from '../../store/RootReducer';
+import { columnsSelect, dataSelect } from '../../store/selectors';
 
 import styles from './styles.module.css';
 
@@ -23,12 +23,8 @@ export interface IStartPoint {
 const Calendar: React.FC = () => {
   const dispatch = useDispatch();
 
-  const data = useSelector<AppStateType, IData[]>(
-    (store) => store.reducer.data,
-  );
-  const columns = useSelector<AppStateType, any[]>(
-    (store) => store.reducer.columns,
-  );
+  const data = useSelector(dataSelect);
+  const columns = useSelector(columnsSelect);
 
   const currentDate = dateFormatter(new Date());
 

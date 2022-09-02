@@ -2,9 +2,6 @@ import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import { AppStateType } from '../../store/RootReducer';
-import { InitialStateType } from '../../store/types';
-
 import {
   fetchSaga,
   setColumnsQuantity,
@@ -18,6 +15,14 @@ import MaxEmployee from '../../components/MaxEmployee';
 import columnGenerator from '../../components/Calendar/assets/columns';
 
 import styles from './styles.module.css';
+import {
+  columnsQuantitySelect,
+  dataSelect,
+  firstRangeDateSelect,
+  loaderFlagSelect,
+  maxValueSelect,
+  modalFlagSelect,
+} from '../../store/selectors';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(
@@ -31,12 +36,15 @@ const LazyModal = React.lazy(() => import('../../ui/Modal'));
 const Root: React.FC = () => {
   const dispatch = useDispatch();
 
-  const store = useSelector<AppStateType, InitialStateType>(
-    (store) => store.reducer,
-  );
+  const columnsQuantity = useSelector(columnsQuantitySelect);
+  const data = useSelector(dataSelect);
+  const firstRangeDate = useSelector(firstRangeDateSelect);
+  const loaderFlag = useSelector(loaderFlagSelect);
+  const maxValue = useSelector(maxValueSelect);
+  const modalFlag = useSelector(modalFlagSelect);
 
   useEffect(() => {
-    dispatch(fetchSaga(store.data, store.maxValue, store.columnsQuantity));
+    dispatch(fetchSaga(data, maxValue, columnsQuantity));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -56,15 +64,15 @@ const Root: React.FC = () => {
 
   useEffect(() => {
     // @ts-ignore
-    return columnGenerator(store.firstRangeDate, store.maxValue, 90);
-  }, [store.firstRangeDate, store.maxValue]);
+    return columnGenerator(firstRangeDate, maxValue, 90);
+  }, [firstRangeDate, maxValue]);
 
   const addPeriodHandler = useCallback(() => {
-    const newColumnsQuantity = store.columnsQuantity + 90;
+    const newColumnsQuantity = columnsQuantity + 90;
     localStorage.setItem('columnsQuantity', String(newColumnsQuantity));
     dispatch(setColumnsQuantity(newColumnsQuantity));
-    dispatch(fetchSaga(store.data, store.maxValue, newColumnsQuantity));
-  }, [dispatch, store.columnsQuantity, store.data, store.maxValue]);
+    dispatch(fetchSaga(data, maxValue, newColumnsQuantity));
+  }, [dispatch, columnsQuantity, data, maxValue]);
 
   // app height
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -88,11 +96,11 @@ const Root: React.FC = () => {
         <h1>Remote Calendar</h1>
       </header>
 
-      {store.loaderFlag ? (
+      {loaderFlag ? (
         <Loader />
       ) : (
         <>
-          {store.modalFlag && (
+          {modalFlag && (
             <Suspense fallback={<Loader />}>
               <LazyModal
                 onCloseButtonClick={onCloseModal}
@@ -117,25 +125,23 @@ const Root: React.FC = () => {
               onButtonClick={onOpenModal}
             />
 
-            {store.data.length > 2 && (
+            {data.length > 2 && (
               <Button
                 buttonText={
-                  store.data.length === 3
-                    ? 'Delete employee'
-                    : 'Delete all employees'
+                  data.length === 3 ? 'Delete employee' : 'Delete all employees'
                 }
                 buttonType="button"
                 onButtonClick={onToggleDelModal}
                 stylesButton={clsx(
                   styles.deleteButton,
-                  store.data.length <= 2 && styles.disabledButton,
+                  data.length <= 2 && styles.disabledButton,
                 )}
-                disabled={store.data.length <= 2}
+                disabled={data.length <= 2}
               />
             )}
           </section>
 
-          {store.data.length > 2 && (
+          {data.length > 2 && (
             <>
               <section className={clsx(styles.section, styles.calendar)}>
                 <Suspense fallback={<Loader />}>
@@ -154,7 +160,7 @@ const Root: React.FC = () => {
 
               <section className={clsx(styles.section, styles.sectionTotal)}>
                 <span>Total employees:</span>
-                <span>{store.data.length - 2}</span>
+                <span>{data.length - 2}</span>
               </section>
 
               <section

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addNewEmployee, setModalFlag } from '../../store/actions/actions';
 
-import { AppStateType } from '../../store/RootReducer';
-import { IData } from '../../store/types';
+import { dataSelect } from '../../store/selectors';
 
 import Button from '../../ui/Button';
 
@@ -21,9 +20,7 @@ const ModalContent: React.FC = () => {
     ref.current.focus();
   }, []);
 
-  const data = useSelector<AppStateType, IData[]>(
-    (store) => store.reducer.data,
-  );
+  const data = useSelector(dataSelect);
 
   const [name, setName] = useState<string>('');
   const [typeOfWork, setTypeOfWork] = useState<string>('office');
