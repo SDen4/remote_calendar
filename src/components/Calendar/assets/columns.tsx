@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import dateGenerator from '../../../utils/dateGenerator';
 import monthsNames from '../../../utils/monthsNames';
 
-import styles from './columns.module.css';
+import styles from './styles.module.css';
 import { dateFormatter } from '../../../utils/dateFormatter';
 
 const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
