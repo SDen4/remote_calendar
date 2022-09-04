@@ -1,9 +1,9 @@
-import * as CONST from '../constants';
+import { ActionsType } from '../actions/actions';
+
+import { InitialStateType } from '../types';
 
 import { initialData } from '../../constants/table';
-
-import { ActionsType } from '../actions/actions';
-import { InitialStateType } from '../types';
+import * as CONST from '../constants';
 
 const initialState: InitialStateType = {
   data: initialData,

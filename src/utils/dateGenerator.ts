@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import { dateFormatter } from './dateFormatter';
 
 const dateGenerator: any = (date: Date, datesLength: number) => {

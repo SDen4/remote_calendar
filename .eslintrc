@@ -7,11 +7,12 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "simple-import-sort",
+    "jsx-a11y",
+    "import"
   ],
   "extends": [
-    "airbnb",
-    "airbnb/hooks",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
@@ -88,7 +89,7 @@
     "max-len": "warn",
     "dot-notation": "warn",
     "no-continue": "warn",
-    "indent": "warn",
+    "indent": "off",
     "unicode-bom": "off",
     "no-process-exit": "error",
     "import/first": "error",
@@ -116,5 +117,41 @@
       "version": "detect"
     },
     "cache": false
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts*"
+      ],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              [
+                "^react",
+                "^redux",
+                "^@?\\w",
+                "^(@|@company|@ui|config|vendored-lib)(/.*|$)"
+              ],
+              [
+                "^\\$+",
+                "^\\.\\.(?!/?$)",
+                "^\\.\\./?$",
+                "^\\./(?=.*/)(?!/?$)",
+                "^\\.(?!/?$)",
+                "^\\./?$"
+              ],
+              ["ui", "components"],
+              ["api", "utils"],
+              ["store"],
+              ["types"],
+              ["constants"],
+              ["^.+\\.s?css$"]
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

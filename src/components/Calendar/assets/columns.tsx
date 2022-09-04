@@ -1,11 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 
+import { dateFormatter } from '../../../utils/dateFormatter';
 import dateGenerator from '../../../utils/dateGenerator';
 import monthsNames from '../../../utils/monthsNames';
 
 import styles from './styles.module.css';
-import { dateFormatter } from '../../../utils/dateFormatter';
 
 const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
   if (!date) {

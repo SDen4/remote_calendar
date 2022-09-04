@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTable } from 'react-table';
 import clsx from 'clsx';
 
-import { saveAllData } from '../../store/actions/actions';
-
 import { dateFormatter } from '../../utils/dateFormatter';
 
-import { defaultCell } from '../../constants/table';
-
-import { IData } from '../../store/types';
+import { saveAllData } from '../../store/actions/actions';
 import { columnsSelect, dataSelect } from '../../store/selectors';
+import { IData } from '../../store/types';
+
+import { defaultCell } from '../../constants/table';
 
 import styles from './styles.module.css';
 

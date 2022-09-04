@@ -1,14 +1,14 @@
 import React, { memo } from 'react';
 import { useDispatch } from 'react-redux';
 
+import Button from '../../ui/Button';
+
 import {
   fetchSaga,
   saveAllData,
   saveFirstRangeDate,
   setColumnsQuantity,
 } from '../../store/actions/actions';
-
-import Button from '../../ui/Button';
 
 import { initialData } from '../../constants/table';
 

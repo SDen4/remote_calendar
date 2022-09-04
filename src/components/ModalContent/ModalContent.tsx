@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addNewEmployee, setModalFlag } from '../../store/actions/actions';
-
-import { dataSelect } from '../../store/selectors';
-
 import Button from '../../ui/Button';
 
 import accessorDatesGenerator from '../../utils/accessorDatesGenerator';
 import formatInputName from '../../utils/formatInputName';
+
+import { addNewEmployee, setModalFlag } from '../../store/actions/actions';
+import { dataSelect } from '../../store/selectors';
 
 import styles from './styles.module.css';
 

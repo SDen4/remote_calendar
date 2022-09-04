@@ -9,6 +9,7 @@ const accessorDatesGenerator: any = (date: Date, name: string) => {
   newObj.name = name;
 
   for (let i = 0; i < datesLength; i++) {
+    // eslint-disable-next-line no-mixed-operators
     const date = dateFormatter(new Date(currentDate.getTime() + 86400000 * i));
     const newDate = `a_${date.slice(0, 2)}${date.slice(3, 5)}${date.slice(
       6,

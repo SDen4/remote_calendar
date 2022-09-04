@@ -2,19 +2,18 @@ import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
+import Button from '../../ui/Button';
+
+import columnGenerator from '../../components/Calendar/assets/columns';
+import Loader from '../../components/Loader';
+import MaxEmployee from '../../components/MaxEmployee';
+import Notice from '../../components/Notice';
+
 import {
   fetchSaga,
   setColumnsQuantity,
   setModalFlag,
 } from '../../store/actions/actions';
-
-import Button from '../../ui/Button';
-import Loader from '../../components/Loader';
-import Notice from '../../components/Notice';
-import MaxEmployee from '../../components/MaxEmployee';
-import columnGenerator from '../../components/Calendar/assets/columns';
-
-import styles from './styles.module.css';
 import {
   columnsQuantitySelect,
   dataSelect,
@@ -23,6 +22,8 @@ import {
   maxValueSelect,
   modalFlagSelect,
 } from '../../store/selectors';
+
+import styles from './styles.module.css';
 
 const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
 const LazyModalContent = React.lazy(
@@ -45,7 +46,6 @@ const Root: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchSaga(data, maxValue, columnsQuantity));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const [delModal, setDelModal] = useState<boolean>(false);
