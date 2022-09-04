@@ -142,7 +142,7 @@
                 "^\\.(?!/?$)",
                 "^\\./?$"
               ],
-              ["ui", "components"],
+              ["/ui", "ui", "/components", "components"],
               ["api", "utils"],
               ["store"],
               ["types"],

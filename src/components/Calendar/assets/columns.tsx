@@ -7,7 +7,11 @@ import monthsNames from '../../../utils/monthsNames';
 
 import styles from './styles.module.css';
 
-const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
+export const columnGenerator = (
+  date: Date,
+  maxValue: number,
+  datesLength: number,
+) => {
   if (!date) {
     return [];
   }
@@ -125,5 +129,3 @@ const columnGenerator = (date: Date, maxValue: number, datesLength: number) => {
   }
   return columns;
 };
-
-export default columnGenerator;

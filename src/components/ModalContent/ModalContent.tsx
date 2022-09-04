@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Button from '../../ui/Button';
+import { Button } from '../../ui/Button';
 
 import accessorDatesGenerator from '../../utils/accessorDatesGenerator';
 import formatInputName from '../../utils/formatInputName';

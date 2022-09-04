@@ -1,1 +1,1 @@
-export { default } from './MaxEmployee';
+export * from './MaxEmployee';

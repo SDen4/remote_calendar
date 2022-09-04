@@ -12,24 +12,18 @@ interface IProps {
   disabled?: boolean;
 }
 
-const Button: React.FC<IProps> = ({
-  buttonText,
-  buttonType,
-  onButtonClick,
-  stylesButton,
-  disabled,
-}) => {
-  return (
-    <button
-      type={buttonType}
-      aria-label={buttonText}
-      onClick={onButtonClick}
-      className={clsx(styles.button, stylesButton)}
-      disabled={disabled}
-    >
-      {buttonText}
-    </button>
-  );
-};
-
-export default memo(Button);
+export const Button: React.FC<IProps> = memo(
+  ({ buttonText, buttonType, onButtonClick, stylesButton, disabled }) => {
+    return (
+      <button
+        type={buttonType}
+        aria-label={buttonText}
+        onClick={onButtonClick}
+        className={clsx(styles.button, stylesButton)}
+        disabled={disabled}
+      >
+        {buttonText}
+      </button>
+    );
+  },
+);

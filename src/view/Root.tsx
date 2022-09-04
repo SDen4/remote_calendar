@@ -2,12 +2,11 @@ import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import Button from '../ui/Button';
-
-import columnGenerator from '../components/Calendar/assets/columns';
-import Loader from '../components/Loader';
-import MaxEmployee from '../components/MaxEmployee';
-import Notice from '../components/Notice';
+import { Button } from '../ui/Button';
+import { columnGenerator } from '../components/Calendar/assets/columns';
+import { Loader } from '../components/Loader';
+import { MaxEmployee } from '../components/MaxEmployee';
+import { Notice } from '../components/Notice';
 
 import {
   fetchSaga,
@@ -32,7 +31,7 @@ const LazyModalDelContent = React.lazy(
 );
 const LazyModal = React.lazy(() => import('../ui/Modal'));
 
-const Root: React.FC = () => {
+export const Root: React.FC = () => {
   const dispatch = useDispatch();
 
   const columnsQuantity = useSelector(columnsQuantitySelect);
@@ -177,5 +176,3 @@ const Root: React.FC = () => {
     </div>
   );
 };
-
-export default Root;

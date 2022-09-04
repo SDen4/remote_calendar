@@ -71,7 +71,6 @@ export const setLoaderFlag = (loaderFlag: boolean) => {
   } as const;
 };
 
-type FetchSagaType = ReturnType<typeof fetchSaga>;
 type saveAllDataType = ReturnType<typeof saveAllData>;
 type saveAllColumnsType = ReturnType<typeof saveAllColumns>;
 type saveFirstRangeDateType = ReturnType<typeof saveFirstRangeDate>;
@@ -82,7 +81,6 @@ type setColumnsQuantityType = ReturnType<typeof setColumnsQuantity>;
 type setLoaderFlagType = ReturnType<typeof setLoaderFlag>;
 
 export type ActionsType =
-  | FetchSagaType
   | saveAllDataType
   | saveAllColumnsType
   | saveFirstRangeDateType

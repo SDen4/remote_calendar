@@ -9,7 +9,7 @@ import {
   setLoaderFlag,
 } from '../actions/actions';
 
-import columnGenerator from '../../components/Calendar/assets/columns';
+import { columnGenerator } from '../../components/Calendar/assets/columns';
 
 import { FetchSagaActionType, IData } from '../types';
 

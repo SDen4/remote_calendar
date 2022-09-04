@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.css';
 
-const Notice: React.FC = () => {
+export const Notice: React.FC = () => {
   return (
     <>
       <h3>Notice</h3>
@@ -29,5 +29,3 @@ const Notice: React.FC = () => {
     </>
   );
 };
-
-export default Notice;

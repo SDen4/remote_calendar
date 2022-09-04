@@ -8,7 +8,7 @@ import {
   maxValueSelect,
 } from '../../store/selectors';
 
-const MaxEmployee: React.FC = () => {
+export const MaxEmployee: React.FC = () => {
   const dispatch = useDispatch();
 
   const data = useSelector(dataSelect);
@@ -41,5 +41,3 @@ const MaxEmployee: React.FC = () => {
     </>
   );
 };
-
-export default MaxEmployee;
