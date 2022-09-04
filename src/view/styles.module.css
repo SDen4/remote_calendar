@@ -7,7 +7,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: center / contain no-repeat url('./assets/calendar.png'),
+  background: center / contain no-repeat url('../static/calendar.png'),
     radial-gradient(gray -155%, black 95%);
   color: #fff;
   padding: 20px;

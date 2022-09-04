@@ -2,18 +2,18 @@ import React, { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 
-import Button from '../../ui/Button';
+import Button from '../ui/Button';
 
-import columnGenerator from '../../components/Calendar/assets/columns';
-import Loader from '../../components/Loader';
-import MaxEmployee from '../../components/MaxEmployee';
-import Notice from '../../components/Notice';
+import columnGenerator from '../components/Calendar/assets/columns';
+import Loader from '../components/Loader';
+import MaxEmployee from '../components/MaxEmployee';
+import Notice from '../components/Notice';
 
 import {
   fetchSaga,
   setColumnsQuantity,
   setModalFlag,
-} from '../../store/actions/actions';
+} from '../store/actions/actions';
 import {
   columnsQuantitySelect,
   dataSelect,
@@ -21,18 +21,16 @@ import {
   loaderFlagSelect,
   maxValueSelect,
   modalFlagSelect,
-} from '../../store/selectors';
+} from '../store/selectors';
 
 import styles from './styles.module.css';
 
-const LazyCalendar = React.lazy(() => import('../../components/Calendar'));
-const LazyModalContent = React.lazy(
-  () => import('../../components/ModalContent'),
-);
+const LazyCalendar = React.lazy(() => import('../components/Calendar'));
+const LazyModalContent = React.lazy(() => import('../components/ModalContent'));
 const LazyModalDelContent = React.lazy(
-  () => import('../../components/ModalDelContent'),
+  () => import('../components/ModalDelContent'),
 );
-const LazyModal = React.lazy(() => import('../../ui/Modal'));
+const LazyModal = React.lazy(() => import('../ui/Modal'));
 
 const Root: React.FC = () => {
   const dispatch = useDispatch();
