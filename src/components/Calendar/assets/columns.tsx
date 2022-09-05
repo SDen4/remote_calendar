@@ -8,7 +8,7 @@ import monthsNames from '../../../utils/monthsNames';
 import styles from './styles.module.css';
 
 export const columnGenerator = (
-  date: Date,
+  date: Date | null,
   maxValue: number,
   datesLength: number,
 ) => {

@@ -16,7 +16,8 @@ export const MaxEmployee: React.FC = () => {
   const maxValue = useSelector(maxValueSelect);
 
   const onChangeMaxEmployees = useCallback(
-    (value: number) => {
+    (event) => {
+      const value = Number(event?.target.value);
       if (value < 0) {
         return;
       }
@@ -36,7 +37,7 @@ export const MaxEmployee: React.FC = () => {
         type="number"
         min={1}
         value={maxValue}
-        onChange={(event) => onChangeMaxEmployees(Number(event?.target.value))}
+        onChange={onChangeMaxEmployees}
       />
     </>
   );

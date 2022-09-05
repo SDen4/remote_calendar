@@ -60,7 +60,6 @@ export const Root: React.FC = () => {
   }, [delModal]);
 
   useEffect(() => {
-    // @ts-ignore
     return columnGenerator(firstRangeDate, maxValue, 90);
   }, [firstRangeDate, maxValue]);
 
@@ -72,7 +71,6 @@ export const Root: React.FC = () => {
   }, [dispatch, columnsQuantity, data, maxValue]);
 
   // app height
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [appHeight, setAppHeight] = useState<number>(0);
   useEffect(() => setAppHeight(window.innerHeight), []);
 
@@ -82,7 +80,6 @@ export const Root: React.FC = () => {
     () => setAppHeight(window.outerHeight),
     true,
   );
-  // app height
 
   return (
     <div
