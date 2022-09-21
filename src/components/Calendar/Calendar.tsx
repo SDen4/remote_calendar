@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTable } from 'react-table';

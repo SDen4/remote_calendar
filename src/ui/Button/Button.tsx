@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import React, { memo } from 'react';
 import clsx from 'clsx';
 
