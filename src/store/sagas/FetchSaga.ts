@@ -11,11 +11,18 @@ import {
 
 import { columnGenerator } from '../../components/Calendar/assets/columns';
 
-import { FetchSagaActionType, IData } from '../types';
+import { IData } from '../types';
 
 import { FETCH_SAGA } from '../constants';
 
-function* sagaWorker(action: FetchSagaActionType) {
+interface IActionProps {
+  type: typeof FETCH_SAGA;
+  data: IData[];
+  maxValue: number;
+  columnsQuantity: number;
+}
+
+function* sagaWorker(action: IActionProps) {
   try {
     const firstRangeDateFromLocalStorage: Date = yield localStorage.getItem(
       'firstRangeDate',

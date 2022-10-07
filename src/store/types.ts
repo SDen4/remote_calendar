@@ -1,5 +1,3 @@
-import { FETCH_SAGA } from './constants';
-
 export interface IData {
   name: string;
   [key: string]: string | number;
@@ -13,11 +11,4 @@ export interface InitialStateType {
   maxValue: number;
   columnsQuantity: number;
   loaderFlag: boolean;
-}
-
-export interface FetchSagaActionType {
-  type: typeof FETCH_SAGA;
-  data: IData[];
-  maxValue: number;
-  columnsQuantity: number;
 }
