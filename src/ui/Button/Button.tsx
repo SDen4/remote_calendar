@@ -1,9 +1,9 @@
-import React, { memo } from 'react';
+import React, { HTMLAttributes, memo } from 'react';
 import clsx from 'clsx';
 
 import styles from './styles.module.css';
 
-interface IProps {
+interface IProps extends HTMLAttributes<HTMLButtonElement> {
   buttonText: string;
   buttonType: 'button' | 'submit' | 'reset';
   onButtonClick?: (event: React.SyntheticEvent) => void;

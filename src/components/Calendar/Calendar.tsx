@@ -13,7 +13,7 @@ import { defaultCell } from '../../constants/table';
 
 import styles from './styles.module.css';
 
-export interface IStartPoint {
+interface IStartPoint {
   row: string;
   cell: string;
 }
